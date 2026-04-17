@@ -85,7 +85,8 @@ body {
   border-radius: 40px;
   padding: 6px 10px;
   gap: 10px;
-  width: 400px;
+  width: 350px;
+  transition: 0.3s;
 }
 
 .nav-link {
@@ -140,9 +141,7 @@ body {
   margin-left: 280px;
   margin-top: 80px;
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  ;
 }
 
 /* ================= CARDS ================= */
@@ -154,7 +153,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 220px;
+  width: 100%;
   transition: 0.3s;
 }
 
@@ -194,6 +193,7 @@ body {
 /* Buttons */
  .button-group {
   display: flex;
+ }
 .hero h1 {
   font-size: 32px;
 }
@@ -250,7 +250,12 @@ body {
 
 /* Home Layout */
 .home {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
 .privacy-wrapper p {
   text-align: center;
   color: #444;
@@ -258,6 +263,7 @@ body {
 
 /* ================= FOOTER ================= */
 .footer {
+  margin-top: auto;
   margin-left: 280px;
   background: #fff;
   padding: 40px 20px;
@@ -312,6 +318,7 @@ body {
   .footer-container {
     grid-template-columns: 1fr;
   }
+}
 .socials span:hover {
   transform: scale(1.2);
 }
@@ -439,3 +446,38 @@ body {
 .card * {
   transition: all 0.3s ease;
 }
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.secondary-btn {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+.search-bar input:focus {
+  background: #2a2a2a;
+}
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+* {
+  transition: all 0.2s ease-in-out;
+}
+
