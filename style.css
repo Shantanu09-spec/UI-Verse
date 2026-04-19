@@ -87,6 +87,7 @@ body {
   padding: 6px 10px;
   gap: 10px;
   width: 350px;
+  max-width: 100%;
   transition: 0.3s;
 }
 
