@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbars - UIverse</title>
+  <title>Forms - UIverse</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
- <nav class="navbar">
+   <nav class="navbar">
   <!-- Logo -->
   <div class="logo">Ulverse</div>
 
@@ -27,12 +26,13 @@
     <a href="#"></a>
   </div>
 </nav>
+
 <div class="container">
   <button class="hamburger" type="button" aria-label="Toggle menu" onclick="toggleSidebar()">☰</button>
 
   <!-- Sidebar -->
   <aside class="sidebar">
-    <h2>UIverse</h2>  
+    <h2>UIverse</h2>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="alerts.html">Alerts</a></li>
@@ -41,10 +41,10 @@
       <li><a href="cards.html">Cards</a></li>
       <li><a href="color.html">Colors</a></li>
       <li><a href="footer.html">Footer</a></li>
-      <li><a href="form.html">Forms</a></li>
+      <li class="active"><a href="form.html">Forms</a></li>
       <li><a href="inputs.html">Inputs</a></li>
       <li><a href="loaders.html">Loaders</a></li>
-      <li class="active"><a href="navbar.html">Navbars</a></li>
+      <li><a href="navbar.html">Navbars</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="testimonials.html">Testimonials</a></li>
     </ul>
@@ -53,62 +53,20 @@
 
   <!-- Main -->
   <main class="main">
-
-    <!-- Page Header -->
     <div class="page-header">
-      <h1>Navbars</h1>
-      <p>Reusable and modern navigation bars</p>
+      <h1>Forms</h1>
+      <p>Explore reusable and ready-to-use form components</p>
     </div>
-
-   <div class="nav-page">
-
-
-    <!-- Simple Navbar -->
-    <div id="Simple-navbar" class="component-card">
-    <div class="component-card" data-name="simple navbar basic links">
-      <h3>Simple Navbar</h3>
-
-      <div class="nav-preview">
-        <nav class="nav-simple nav-links">
-          <h4>UIverse</h4>
-          <div>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-          </div>
-        </nav>
+    <div class = "button group">
+      <!--Login Form  -->
+      <div class = "component-card">
+        <h3>Login Form</h3>
+        <form>
+          <input type="email" placeholder="Email" class="form-input"/><br><br>
+          <input type="password" placeholder="Password" /><br><br>
+          <button type="submit" class="nav-btn">Login</button>
+        </form>
       </div>
-    </div>
-
-    <!-- Center Navbar -->
-    <div id="centered-navbar" class="component-card">
-    <div class="component-card" data-name="centered navbar menu clean">
-      <h3>Centered Navbar</h3>
-
-      <div class="nav-preview">
-        <nav class="nav-center nav-links">
-          <a href="#">Home</a>
-          <a href="#">Features</a>
-          <a href="#">Docs</a>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Button Navbar -->
-    <div id="Button-navbar" class="component-card">
-    <div class="component-card" data-name="button navbar login dark">
-      <h3>Button Navbar</h3>
-
-      <div class="nav-preview">
-        <nav class="nav-btn">
-          <h4>UIverse</h4>
-          <button>Login</button>
-        </nav>
-      </div>
-    </div>
-
-    </div>
-
   </main>
 
 </div>
@@ -140,11 +98,8 @@
       <p>Terms of Service</p>
     </div>
 
-<script src="script.js"></script>
-
   </div>
 </footer>
 <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
