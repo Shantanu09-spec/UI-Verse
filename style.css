@@ -778,6 +778,43 @@ nav a:hover {
 .student-card .profile-btn:hover {
   background: #000;
 }
+/* =====================
+   TOAST NOTIFICATION
+   ===================== */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: #222;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.toast.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.toast-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* Dark mode support */
+body.dark-mode .toast {
+  background: #f0f0f0;
+  color: #111;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.1);
+}
 
 /*Terms of Service Page*/
 
