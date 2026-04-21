@@ -235,7 +235,7 @@ nav a:hover {
 /* ================= CARDS ================= */
 .component-card {
   background: rgba(232, 229, 226, 0.932);
-  padding: 20px;
+  padding: 6px;
   border-radius: 14px;
   border: 1px solid #eee;
   /* display: flex;
@@ -778,3 +778,75 @@ nav a:hover {
 .student-card .profile-btn:hover {
   background: #000;
 }
+/* =====================
+   TOAST NOTIFICATION
+   ===================== */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: #222;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.toast.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.toast-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* Dark mode support */
+body.dark-mode .toast {
+  background: #f0f0f0;
+  color: #111;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.1);
+}
+
+/*Terms of Service Page*/
+
+.terms-content{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 50px auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* General icon styling */
+.features h3 i {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.features h3 {
+  text-align: center;
+}
+
+.features p {
+  text-align: center;
+}
+
+
+/* Color matching UI theme */
+.fa-layer-group { color: #5900ff; } 
+.fa-seedling   { color: #008ef3; } 
+.fa-bolt       { color: #ff0400; } 
+.fa-rocket {color:rgb(190, 37, 63)}
