@@ -36,10 +36,13 @@ body {
 .main {
   margin-left: 240px;
   padding: 40px;
-  display: grid;
+  width: calc(100% - 240px);
+  /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
+  gap: 20px; */
+  display: flex;
+  flex-direction: column;
+} 
 
 /* Header */
 .page-header {
@@ -148,61 +151,102 @@ body {
   box-shadow: 0 5px 0 #019875;
 }
 
-/* Home Layout */
-.home {
-  display: block;
-}
 
-/* Hero Section */
+/* HERO */
 .hero {
   background: white;
   padding: 40px;
   border-radius: 16px;
   margin-bottom: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.hero h1 {
+.hero-left {
+  max-width: 60%;
+}
+
+.hero-left h1 {
   font-size: 32px;
   margin-bottom: 10px;
 }
 
-.hero p {
+.hero-left p {
   color: #666;
-  margin-bottom: 20px;
 }
 
-/* Explore Button */
+/* BUTTON */
 .explore-btn {
-  display: inline-block;
   padding: 12px 20px;
   background: linear-gradient(45deg, #ff6b6b, #6c5ce7);
   color: white;
   text-decoration: none;
   border-radius: 8px;
-  transition: 0.3s;
 }
 
-.explore-btn:hover {
-  transform: scale(1.05);
-}
-
-/* Features Grid */
+/* FEATURES GRID */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
-/* Feature Card */
+/* CARDS */
 .feature-card {
   background: white;
   padding: 20px;
   border-radius: 14px;
   border: 1px solid #eee;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 15px;
+  border: 6px solid #ddd;
+  outline: none;
+}
+
+/* FEATURED SECTION */
+.featured {
+  margin-bottom: 30px;
+}
+
+.featured h2 {
+  margin-bottom: 15px;
+}
+
+.featured-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+/* IMPROVED HOVER */
+.feature-card {
   transition: 0.3s;
 }
 
 .feature-card:hover {
+  background: #d5aade;
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.search-bar input:hover {
+  border-color: #6c5ce7;
 }
