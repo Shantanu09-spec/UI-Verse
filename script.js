@@ -173,26 +173,25 @@ function handleSearch(event) {
 }
  
 /* DARK MODE TOGGLE */
-const toggleBtn = document.getElementById("theme-toggle");
- 
-if (toggleBtn) {
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
- 
+window.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (toggleBtn) {
     if (document.body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-      toggleBtn.innerText = "☀️ Light Mode";
-    } else {
-      localStorage.setItem("theme", "light");
-      toggleBtn.innerText = "🌙 Dark Mode";
-    }
-  });
- 
-  window.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark-mode");
       toggleBtn.innerText = "☀️ Light Mode";
     }
-  });
-}
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        toggleBtn.innerText = "☀️ Light Mode";
+      } else {
+        localStorage.setItem("theme", "light");
+        toggleBtn.innerText = "🌙 Dark Mode";
+      }
+    });
+  }
+});
