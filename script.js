@@ -18,6 +18,7 @@ function closePopup(){
 function toggleCode(id) {
   const el = document.getElementById(id);
 /* TOAST NOTIFICATION */
+}
 function showToast(message) {
 
   const existing = document.getElementById("toast-notification");
@@ -58,17 +59,20 @@ function toggleCode(id) {
 /* COPY CODE */
 function copyCode(id, btn) {
   const code = document.getElementById(id).innerText;
- 
+
   navigator.clipboard.writeText(code)
     .then(() => {
       showToast("Code copied!");
- 
+
       if (btn) {
-        btn.innerText = "Copied!";
-        btn.style.background = "#00b894";
+        const originalText = btn.innerText;
+
+        btn.innerText = "Copied ✓";
+        btn.classList.add("copied");
+
         setTimeout(() => {
-          btn.innerText = "Copy";
-          btn.style.background = "#111";
+          btn.innerText = originalText;
+          btn.classList.remove("copied");
         }, 1500);
       }
     })
