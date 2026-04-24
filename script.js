@@ -43,3 +43,22 @@ function copyCode(id, btn) {
       btn.innerText = "Error";
     });
 }
+
+const btn = document.getElementById("scrollTopBtn");
+
+// show btn when scrolling down
+window.onscroll = function () {
+  if (document.documentElement.scrollTop > 50) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+// scroll to top
+btn.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+};

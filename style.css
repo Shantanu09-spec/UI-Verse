@@ -1,7 +1,9 @@
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #09112a;
+  background: #e1e1e3;
+  height: 1000px;
 }
 
 .container {
@@ -308,4 +310,18 @@ body {
 
 .search-bar input:hover {
   border-color: #6c5ce7;
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border: none;
+  background-color: rgb(16, 15, 15);
+  color: rgba(249, 254, 255, 0.986);
+  cursor: pointer;
+  border-radius: 5px;
 }
