@@ -942,6 +942,225 @@ body.sidebar-hidden .footer {
   box-shadow: 0 0 0 3px rgba(108,92,231,0.12);
 }
 
+/* ================= INPUT TYPES STYLING ================= */
+
+/* Base input styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="month"],
+input[type="week"],
+input[type="datetime-local"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9dce3;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="datetime-local"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.12);
+}
+
+/* Checkbox and Radio Styling */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #6c5ce7;
+}
+
+/* Checkbox and Radio Label */
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+label input[type="checkbox"],
+label input[type="radio"] {
+  margin-bottom: 0;
+}
+
+/* Textarea Styling */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: Arial, sans-serif;
+}
+
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Select/Dropdown Styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 20px;
+  padding-right: 36px;
+}
+
+/* Range Input Styling */
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #6c5ce7;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #6c5ce7;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #5f3dc4;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #5f3dc4;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.4);
+}
+
+/* Color Input Styling */
+input[type="color"] {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #d9dce3;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+input[type="color"]:hover {
+  border-color: #6c5ce7;
+}
+
+/* File Input Styling */
+input[type="file"] {
+  padding: 8px 0;
+  border: none;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 8px 16px;
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  margin-right: 12px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #5f3dc4;
+}
+
+/* Disabled Input Styling */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #e0e0e0;
+}
+
+input:disabled::placeholder,
+textarea:disabled::placeholder {
+  color: #bbb;
+}
+
+/* Readonly Input Styling */
+input[readonly],
+textarea[readonly],
+select[readonly] {
+  background-color: #f9f9f9;
+  color: #666;
+  border-color: #ddd;
+  cursor: default;
+}
+
+/* Input with Required Attribute */
+input[required]:invalid,
+textarea[required]:invalid,
+select[required]:invalid {
+  border-color: #dc3545;
+}
+
+input[required]:valid,
+textarea[required]:valid,
+select[required]:valid {
+  border-color: #28a745;
+}
 .input[type="checkbox"] {
   width: auto;
   margin-right: 8px;
