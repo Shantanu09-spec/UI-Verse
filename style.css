@@ -689,7 +689,6 @@ body.sidebar-hidden .footer {
   padding: 40px;
   border-radius: 16px;
   margin-bottom: 30px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -705,7 +704,7 @@ body.sidebar-hidden .footer {
 }
 
 .hero-left p {
-  color: #666;
+  color: #080808;
 }
 
 .btn {
@@ -1334,10 +1333,6 @@ textarea {
   border-radius: 5px;
 }
 
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
 
 .toggle-btn {
   position: fixed;
@@ -1353,7 +1348,26 @@ body.dark-mode {
 
 body.dark-mode .toggle-btn {
   background-color: white;
-  color: black;
+  color: rgba(30, 30, 30, 0.943);
+} 
+
+body.dark-mode .component-card,
+body.dark-mode .hero,
+body.dark-mode .feature-card {
+  background: rgb(192, 144, 207);
+  color: #0b0b0b;
+  border-color: #160dc5;
+}
+
+body.dark-mode .search-bar input {
+  background: #454141;
+  color: #ffffff;
+  border-color: #4f40a3;
+}
+
+body.dark-mode .page-header p,
+body.dark-mode .hero-left p {
+  color: #bdaeae;
 }
   margin: 50px auto;
   border-radius: 12px;
