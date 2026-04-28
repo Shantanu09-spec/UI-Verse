@@ -14,7 +14,7 @@ html, body {
   background: #09112a;
   background: #ffffff;
 }
-
+}
 /* LAYOUT */
 body {
   display: flex;
@@ -928,6 +928,7 @@ body.sidebar-hidden .footer {
   padding: 12px 20px;
   background: linear-gradient(45deg, #ff6b6b, #6c5ce7);
   color: white;
+}
 
 /* Home Layout */
 .home {
@@ -2704,3 +2705,4 @@ body.dark-mode .hero-left p {
 .fa-seedling   { color: #008ef3; } 
 .fa-bolt       { color: #ff0400; } 
 .fa-rocket {color:rgb(190, 37, 63)}
+}
