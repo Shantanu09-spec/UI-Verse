@@ -325,8 +325,6 @@ if (searchInput) {
       const text = item.dataset.name.toLowerCase();
       item.style.display = text.includes(value) ? "block" : "none";
     });
-  });
-}
  
 /* SEARCH (PAGE ROUTING) */
 function handleSearch(event) {
@@ -419,6 +417,13 @@ toggleBtn.onclick = function () {
     localStorage.setItem("theme", "light");
     toggleBtn.textContent = "🌙";
   }
+};
+
+window.onscroll = () => {
+  let scrollTop = document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (scrollTop / height) * 100;
+  document.getElementById("progressBar").style.width = scrolled + "%";
 };
 
 /* CLOSE ALERT */
