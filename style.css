@@ -17,6 +17,62 @@ html, body {
 }
 }
 
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background:  rgb(63, 81, 119);
+  color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 20px 15px;
+}
+
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ccc;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.sidebar ul li a i {
+  font-size: 18px;
+}
+
+.sidebar ul li a p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.sidebar ul li a:hover {
+  background: #c7d0ea;
+  color: #151515;
+}
+
+.sidebar ul li a.active {
+  background: #4e73df;
+  color: #fff;
 }
 /* LAYOUT */
 body {
@@ -48,6 +104,12 @@ nav {
   position: relative;
 }
 
+/* Card */
+.component-card {
+  background: rgb(220, 218, 232);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #eee;
 .nav-links {
   display: flex;
   gap: 20px;
@@ -150,6 +212,10 @@ nav a:hover {
   transition: background 0.25s ease, transform 0.25s ease;
 }
 
+.hero-left h1 {
+  color: #1e1e2f;
+  font-size: 32px;
+  margin-bottom: 10px;
 .nav-actions button.secondary {
   background: #f5f5f5;
   color: #333;
