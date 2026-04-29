@@ -1,64 +1,58 @@
-// popup
+// ================= POPUP =================
+let popup;
 
-let popup = document.getElementById("popup");
+document.addEventListener("DOMContentLoaded", () => {
+  popup = document.getElementById("popup");
+});
 
-function openPopup(){
-  popup.classList.add("open-popup");
+function openPopup() {
+  if (popup) popup.classList.add("open-popup");
 }
 
-function closePopup(){
-  popup.classList.remove("open-popup");
+function closePopup() {
+  if (popup) popup.classList.remove("open-popup");
 }
 
 
-
-
-
-/* Toggle Code Block */
-function toggleCode(id) {
-  const el = document.getElementById(id);
-/* TOAST NOTIFICATION */
-}
+// ================= TOAST NOTIFICATION =================
 function showToast(message) {
-
   const existing = document.getElementById("toast-notification");
   if (existing) existing.remove();
- 
+
   const toast = document.createElement("div");
   toast.id = "toast-notification";
   toast.className = "toast";
   toast.textContent = message;
- 
+
   document.body.appendChild(toast);
- 
-  // Trigger slide-in
+
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      toast.classList.add("toast-visible");
-    });
+    toast.classList.add("toast-visible");
   });
- 
-  // Auto-dismiss after 2 seconds
+
   setTimeout(() => {
     toast.classList.remove("toast-visible");
     toast.classList.add("toast-hidden");
     toast.addEventListener("transitionend", () => toast.remove(), { once: true });
   }, 2000);
 }
- 
-/* TOGGLE CODE BLOCK */
+
+
+// ================= TOGGLE CODE BLOCK =================
 function toggleCode(id) {
   const codeBlock = document.getElementById(id);
-  if (codeBlock.style.display === "block") {
-    codeBlock.style.display = "none";
-  } else {
-    codeBlock.style.display = "block";
-  }
+  if (!codeBlock) return;
+
+  codeBlock.classList.toggle("show");
 }
- 
-/* COPY CODE */
+
+
+// ================= COPY CODE =================
 function copyCode(id, btn) {
-  const code = document.getElementById(id).innerText;
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const code = el.innerText;
 
   navigator.clipboard.writeText(code)
     .then(() => {
@@ -77,17 +71,21 @@ function copyCode(id, btn) {
       }
     })
     .catch(() => {
+      showToast("Failed to copy ❌");
+
       if (btn) btn.innerText = "Error";
     });
 }
- 
-/* COPY COLOR */
+
+
+// ================= COPY COLOR =================
 function copyColor(color) {
   navigator.clipboard.writeText(color);
   showToast(color + " copied!");
 }
- 
-/* SIDEBAR TOGGLE */
+
+
+// ================= SIDEBAR =================
 function toggleSidebar() {
   if (window.innerWidth <= 900) {
     document.body.classList.toggle('sidebar-open');
@@ -96,12 +94,14 @@ function toggleSidebar() {
     sessionStorage.setItem('sidebarHidden', isHidden ? '1' : '0');
   }
 }
- 
+
 function updateSidebarActiveLink() {
   const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
   document.querySelectorAll('.sidebar ul li').forEach((li) => {
     const anchor = li.querySelector('a');
     if (!anchor) return;
+
     if (anchor.getAttribute('href').toLowerCase() === currentPage) {
       li.classList.add('active');
     } else {
@@ -109,13 +109,13 @@ function updateSidebarActiveLink() {
     }
   });
 }
- 
+
 function restoreSidebarState() {
   if (window.innerWidth > 900 && sessionStorage.getItem('sidebarHidden') === '1') {
     document.body.classList.add('sidebar-hidden');
   }
 }
- 
+
 function initSidebarLinkClose() {
   document.querySelectorAll('.sidebar ul li a').forEach((anchor) => {
     anchor.addEventListener('click', function () {
@@ -125,70 +125,73 @@ function initSidebarLinkClose() {
     });
   });
 }
- 
-window.addEventListener('DOMContentLoaded', function () {
-  restoreSidebarState();
-  updateSidebarActiveLink();
-  initSidebarLinkClose();
-});
- 
-/* SEARCH (INLINE FILTER) */
-const searchInput = document.getElementById("searchInput");
-const components = document.querySelectorAll(".component-card");
- 
-if (searchInput) {
-  searchInput.addEventListener("keyup", function () {
-    const value = this.value.toLowerCase();
-    components.forEach((item) => {
-      const text = item.dataset.name.toLowerCase();
-      item.style.display = text.includes(value) ? "block" : "none";
+
+
+// ================= SEARCH (FILTER) =================
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const components = document.querySelectorAll(".component-card");
+
+  if (searchInput) {
+    searchInput.addEventListener("keyup", function () {
+      const value = this.value.toLowerCase();
+
+      components.forEach((item) => {
+        const text = (item.dataset.name || item.innerText).toLowerCase();
+        item.style.display = text.includes(value) ? "block" : "none";
+      });
     });
-  });
-}
- 
-/* SEARCH (PAGE ROUTING) */
+  }
+});
+
+
+// ================= SEARCH (ROUTING) =================
 function handleSearch(event) {
   if (event.key === "Enter") {
     const query = event.target.value.toLowerCase().trim();
- 
+
     const routes = {
-      "button":  "button.html",
+      "button": "button.html",
       "buttons": "button.html",
-      "navbar":  "navbar.html",
+      "navbar": "navbar.html",
       "navbars": "navbar.html",
-      "card":    "cards.html",
-      "cards":   "cards.html",
-      "form":    "form.html",
-      "forms":   "form.html",
-      "footer":  "footer.html",
-      "color":   "color.html",
-      "colors":  "color.html"
+      "card": "cards.html",
+      "cards": "cards.html",
+      "form": "form.html",
+      "forms": "form.html",
+      "footer": "footer.html",
+      "color": "color.html",
+      "colors": "color.html"
     };
- 
+
     for (let key in routes) {
       if (query.includes(key)) {
         window.location.href = routes[key];
         return;
       }
     }
- 
+
     showToast("No component found 😢");
   }
 }
- 
-/* DARK MODE TOGGLE */
-window.addEventListener("DOMContentLoaded", () => {
+
+
+// ================= DARK MODE =================
+document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
   }
 
   const toggleBtn = document.getElementById("theme-toggle");
+
   if (toggleBtn) {
-    if (document.body.classList.contains("dark-mode")) {
-      toggleBtn.innerText = "☀️ Light Mode";
-    }
+    toggleBtn.innerText = document.body.classList.contains("dark-mode")
+      ? "☀️ Light Mode"
+      : "🌙 Dark Mode";
+
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
+
       if (document.body.classList.contains("dark-mode")) {
         localStorage.setItem("theme", "dark");
         toggleBtn.innerText = "☀️ Light Mode";
@@ -198,4 +201,9 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Init sidebar after DOM ready
+  restoreSidebarState();
+  updateSidebarActiveLink();
+  initSidebarLinkClose();
 });

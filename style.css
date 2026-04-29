@@ -103,7 +103,7 @@ nav a:hover {
 /* Sidebar */
 .container {
   display: flex;
-  flex: 1;
+  flex-wrap: wrap;
 }
 
 /* ================= SIDEBAR ================= */
@@ -605,6 +605,7 @@ nav a:hover {
 }
 
 /* FEATURES GRID */
+
   box-sizing: border-box;
   transition: 0.25s ease;
   font-size: 14px;
@@ -965,10 +966,16 @@ textarea {
 
 /* Footer */
 .footer {
-  margin-left: 220px;
+  width: calc(100% - 280px); 
+  margin-left: 280px; /* ✅ match sidebar */
   background: #ffffff;
   padding: 40px 60px;
   border-top: 1px solid #e5e7eb;
+
+  display: block;
+  flex-basis: 100%;
+  clear: both;
+}
 /* FEATURED SECTION */
 .featured {
   margin-bottom: 30px;
@@ -1005,6 +1012,7 @@ textarea {
 .search-bar input:hover {
   border-color: #6c5ce7;
 }
+.search-bar {
   margin: 50px auto;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
