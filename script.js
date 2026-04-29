@@ -485,6 +485,8 @@ const toggle = document.getElementById("darkModeToggle");
 toggle.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
 });
+<<<<<<< HEAD
+=======
   }
 })
 /* Toggle Sidebar on mobile and desktop */
@@ -790,3 +792,4 @@ function closeAlert(alertId) {
   const alert = document.getElementById(alertId);
   if (alert) alert.style.display = "none";
 }
+>>>>>>> 5eae2611e7ab2c8d2d06964c195ed2fd9635bfda
