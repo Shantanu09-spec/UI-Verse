@@ -758,6 +758,10 @@ themeToggle?.addEventListener("click", () => {
 
   themeToggle.textContent = isDark ? "☀️" : "🌙";
 });
+function subscribe(e) {
+  e.preventDefault();
+  alert("Subscribed successfully! 🎉");
+}
 
 
 /* ================= SCROLL TOP ================= */
