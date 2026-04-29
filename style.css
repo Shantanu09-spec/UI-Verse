@@ -16,24 +16,58 @@ body {
 .sidebar {
   width: 220px;
   height: 100vh;
-  background: #111;
-  color: white;
-  padding: 20px;
+  background:  rgb(63, 81, 119);
+  color: #fff;
   position: fixed;
+  left: 0;
+  top: 0;
+  padding: 20px 15px;
 }
 
-.sidebar a {
-  display: block;
-  padding: 8px;
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
   color: #ccc;
   text-decoration: none;
-  border-radius: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
-.sidebar a:hover,
-.sidebar .active a {
-  color: white;
-  background: #333;
+.sidebar ul li a i {
+  font-size: 18px;
+}
+
+.sidebar ul li a p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.sidebar ul li a:hover {
+  background: #c7d0ea;
+  color: #151515;
+}
+
+.sidebar ul li a.active {
+  background: #4e73df;
+  color: #fff;
 }
 
 /* Main */
@@ -59,7 +93,7 @@ body {
 
 /* Card */
 .component-card {
-  background: white;
+  background: rgb(220, 218, 232);
   padding: 20px;
   border-radius: 14px;
   border: 1px solid #eee;
@@ -172,6 +206,7 @@ body {
 }
 
 .hero-left h1 {
+  color: #1e1e2f;
   font-size: 32px;
   margin-bottom: 10px;
 }
