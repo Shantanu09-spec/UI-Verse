@@ -70,17 +70,28 @@ body {
   color: #fff;
 }
 
-/* Main */
-.main {
+.main-home {
   margin-left: 240px;
   padding: 40px;
   width: calc(100% - 240px);
+  flex-direction: column; 
   /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px; */
-  display: flex;
-  flex-direction: column;
-} 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  gap: 20px;
+}
+
+/* btn page */
+
+/* Main */
+.main1 {
+  margin-left: 240px;
+  padding: 40px;
+  width: calc(100% - 240px);
+  flex-direction: column; 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
 
 /* Header */
 .page-header {
@@ -88,49 +99,59 @@ body {
 }
 
 .page-header p {
-  color: #666;
+  color: #6c69a5;
 }
 
-/* Card */
 .component-card {
-  background: rgb(220, 218, 232);
+  background: #b4c2e5;
   padding: 20px;
-  border-radius: 14px;
+  border-radius: 16px;
   border: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: 0.3s;
+  gap: 15px;
+  transition: all 0.3s ease;
 }
 
 .component-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(239, 12, 12, 0.08);
 }
 
-/* Center Button */
 .component-card button:first-of-type {
   align-self: center;
+  transition: all 0.25s ease;
+}
+
+.component-card button:first-of-type:hover {
+  transform: scale(1.05);
 }
 
 /* Actions */
-.actions {
+ .actions {
   display: flex;
   gap: 10px;
 }
 
+.actions button:hover {
+  background: #333;
+}
+
 .actions button {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   border: none;
-  background: #111;
+  background: #1f1f1f;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
 }
 
 .actions button:hover {
-  background: #333;
+  background: #444;
+  transform: translateY(-2px);
 }
 
 /* Code */
@@ -150,25 +171,26 @@ body {
   padding: 10px 20px;
   border: none;
   color: white;
-  background: linear-gradient(45deg, #ff6b6b, #6c5ce7);
+  background: linear-gradient(45deg, #084a80, #6c5ce7);
   border-radius: 6px;
 }
 
 /* Outline */
 .outline-btn {
   padding: 10px 20px;
-  border: 2px solid #6c5ce7;
+  border: 2px solid #30229e;
   background: transparent;
-  color: #6c5ce7;
+  color: #1d1655;
   border-radius: 6px;
 }
 
 /* Neon */
 .neon-btn {
   padding: 10px 20px;
-  background: #111;
-  color: #00f7ff;
-  border: 2px solid #00f7ff;
+  background: #7182d6;
+  color: #000505;
+  border: 2px solid #2a393a;
+  border-radius: 6px;
 }
 
 /* Glass */
@@ -182,11 +204,11 @@ body {
 /* Shadow */
 .shadow-btn {
   padding: 10px 20px;
-  background: #00b894;
+  background: #6088cc;
   color: white;
   border: none;
   border-radius: 6px;
-  box-shadow: 0 5px 0 #019875;
+  box-shadow: 0 5px 0 #7e70ca;
 }
 
 
