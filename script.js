@@ -325,8 +325,7 @@ if (searchInput) {
       const text = item.dataset.name.toLowerCase();
       item.style.display = text.includes(value) ? "block" : "none";
     });
-  });
-}
+  };
  
 /* SEARCH (PAGE ROUTING) */
 function handleSearch(event) {
@@ -428,5 +427,4 @@ function closeAlert(alertId) {
     alert.style.display = "none";
   }
 }
-  }
-});
+  });
