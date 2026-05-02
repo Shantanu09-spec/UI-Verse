@@ -1090,6 +1090,96 @@ textarea {
   background: rgb(135, 160, 215);
 }
 
+/* fillforms */
+
+.forms {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form {
+  width: 350px;
+  padding: 25px;
+  background: rgb(183, 183, 186);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.form input ,
+.form textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #4888c7;
+  border-radius: 6px;
+}
+
+.form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background:rgb(63, 81, 119);
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* fill forms */
+.container2 {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.formsh1 {
+  margin-bottom: 20px;
+}
+
+.form-card {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.744);
+  text-align: left;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #847fbf;
+  border-radius: 6px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.form-card button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: rgb(63, 81, 119);
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-card button:hover {
+  background: rgb(135, 160, 215);
+}
+
+.radio-group,
+.checkbox-group {
+  margin: 10px 0;
+}
 /* Color matching UI theme */
 .fa-layer-group { color: #5900ff; } 
 .fa-seedling   { color: #008ef3; } 
