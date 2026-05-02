@@ -394,6 +394,33 @@ function handleSearch(event) {
   }
 }
  
+
+function copyColor(value) {
+  navigator.clipboard.writeText(value);
+  showToast(`${value} copied!`);
+}
+
+function copyRGB(value) {
+  navigator.clipboard.writeText(`rgb(${value})`);
+  showToast(`rgb(${value}) copied!`);
+}
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerText = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 100);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 2000);
+}
+
 /* DARK MODE TOGGLE */
 window.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme") === "dark") {
