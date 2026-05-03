@@ -7,6 +7,7 @@ body {
   transition: 0.3s;
   height: 1000px;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 .container {
@@ -657,6 +658,25 @@ body.dark-mode .hero-left p {
 .radio-group,
 .checkbox-group {
   margin: 10px 0;
+}
+/* responsive-form */
+@media (max-width: 1024px) {
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .container2 {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .options {
+    flex-direction: column;
+    gap: 5px;
+  }
 }
 
 /* badges */
