@@ -83,11 +83,12 @@
   <nav class="navbar">
     <div class="logo">UIverse</div>
 
-    <div class="search-bar">
-      <span class="nav-link active">Explore</span>
-      <input type="text" id="searchInput" placeholder="Search Components" onkeydown="handleSearch(event)" />
-      <button class="search-btn">🔍</button>
-    </div>
+  <!-- Center Search Bar -->
+  <div class="search-bar">
+    <span class="nav-link active">Explore</span>
+    <input type="text" id="searchInput" placeholder="Search Components" onkeydown="handleSearch(event)" />
+    <button class="search-btn">🔍</button>
+  </div>
 
     <div class="nav-right">
       <button class="nav-btn">Add Component</button>
@@ -104,6 +105,7 @@
       <li><a href="button.html"><i class="fa-solid fa-mobile-button"></i><p>Butttons</p></a></li>
       <li><a href="navbar.html"><i class="fa-solid fa-bars"></i><p>Navbar</p></a></li>
       <li><a href="contact.html"><i class="fa-regular fa-user"></i><p>Contact Us</p></a></li>
+      <li><a href="forms.html"><i class="fa-brands fa-wpforms"></i><p>Forms</p></a></li>
       <li class="active"><a href="index.html">Home</a></li>
       <li><a href="button.html">Buttons</a></li>
       <li><a href="navbar.html">Navbars</a></li>
@@ -115,6 +117,8 @@
     </ul>
   </aside> 
 
+  <!-- Main -->
+  <main class="main-home">
   <div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
 
   <!-- ===== MAIN CONTENT ===== -->
@@ -545,19 +549,5 @@
   </div>
 </footer>
 
-<!-- ================= SCRIPT ================= -->
-<script>
-function toggleSidebar() {
-  document.getElementById("sidebar").classList.toggle("active");
-}
-
-document.getElementById("darkModeToggle").onclick = function () {
-  document.body.classList.toggle("light-mode");
-};
-</script>
-
-</body>
-</html>
 <script src="script.js"></script>
-
 </body>
