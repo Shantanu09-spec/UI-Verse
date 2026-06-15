@@ -2,405 +2,410 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise High-Fidelity Rating Engine</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    /* ==========================================================================
-       1. VARIABLES, TOKENS & RESET ENGINE
-       ========================================================================== */
-    :root {
-      --bg-rgb: 5, 8, 22;
-      --surface-rgb: 15, 23, 42;
-      --card-rgb: 13, 18, 36;
-      --primary-rgb: 235, 104, 53;      /* Core Premium Orange Accent */
-      --star-active-rgb: 241, 196, 15;  /* Star Gold Color */
-      --text-rgb: 248, 250, 252;
-      --muted-rgb: 148, 163, 184;
-
-      --bg: rgb(var(--bg-rgb));
-      --surface: rgb(var(--surface-rgb));
-      --card: rgb(var(--card-rgb));
-      --primary: rgb(var(--primary-rgb));
-      --star-active: rgb(var(--star-active-rgb));
-      --text: rgb(var(--text-rgb));
-      --muted: rgb(var(--muted-rgb));
-
-      --font-display: 'Syne', system-ui, -apple-system, sans-serif;
-      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
-
-      --border: rgba(255, 255, 255, 0.06);
-      --glass-blur: blur(16px);
-      --radius-lg: 24px;
-      --radius-md: 14px;
-      
-      --shadow-lg: 0 24px 64px -12px rgba(0, 0, 0, 0.6);
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-
-    /* Decorative Ambient Glow Rings */
-    body::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      left: 10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(var(--primary-rgb), 0.04) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ==========================================================================
-       2. CANVAS CONTAINER APPARATUS
-       ========================================================================== */
-    .container {
-      background: rgba(var(--card-rgb), 0.45);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--border);
-      padding: 56px 48px;
-      border-radius: var(--radius-lg);
-      width: 100%;
-      max-width: 580px;
-      box-shadow: var(--shadow-lg);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      transition: var(--transition-smooth);
-    }
-
-    .container:hover {
-      border-color: rgba(var(--primary-rgb), 0.15);
-      box-shadow: var(--shadow-lg), 0 0 40px rgba(var(--primary-rgb), 0.02);
-    }
-
-    .title {
-      font-family: var(--font-display);
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 30%, rgba(var(--primary-rgb), 0.8) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 400px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-    }
-
-    /* ==========================================================================
-       3. HIGH-FIDELITY STAR CORE LAYOUT
-       ========================================================================== */
-    .star-rating-engine {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    /* Singular Star Box Container housing spatial interaction overlays */
-    .star-cell {
-      position: relative;
-      width: 48px;
-      height: 48px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-    }
-
-    /* Background Vector Anchor Representation Layer */
-    .star-vector-backdrop {
-      font-size: 44px;
-      color: rgba(255, 255, 255, 0.06);
-      transition: var(--transition-smooth);
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Active Highlight Masking Vector Wrapper Layer */
-    .star-vector-foreground {
-      font-size: 44px;
-      color: var(--star-active);
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      width: 0%; /* Dynamic manipulation vector endpoint targets */
-      transition: width 0.15s ease;
-      text-shadow: 0 0 16px rgba(var(--star-active-rgb), 0.3);
-      pointer-events: none;
-    }
-
-    /* Spatial Split Zone Nodes for high fidelity input capturing fractions */
-    .fractional-trigger-zone {
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 50%;
-      z-index: 5;
-    }
-
-    .fractional-trigger-zone.left-half {
-      left: 0;
-    }
-
-    .fractional-trigger-zone.right-full {
-      right: 0;
-    }
-
-    /* Interaction State Enhancements */
-    .star-cell:hover .star-vector-backdrop {
-      transform: scale(1.12);
-      color: rgba(255, 255, 255, 0.12);
-    }
-
-    /* Keyboard Navigation Focus Rings Indicator rules */
-    .star-cell:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.4);
-      border-radius: var(--radius-sm);
-    }
-
-    /* Animated Spring Reaction Class Trigger */
-    .spring-animate {
-      animation: cellBounce 0.45s var(--transition-bounce);
-    }
-
-    @keyframes cellBounce {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-    }
-
-    /* ==========================================================================
-       4. CONTEXT METADATA LABELS & COMPONENT INTERFACES
-       ========================================================================== */
-    .rating-label-wrapper {
-      margin-bottom: 32px;
-      min-height: 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .rating-label {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.3px;
-      transition: var(--transition-fast);
-    }
-
-    .rating-description {
-      font-size: 0.85rem;
-      color: var(--primary);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: var(--transition-smooth);
-    }
-
-    .rating-description.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==========================================================================
-       5. USER INPUT FEEDBACK FIELD MODULE
-       ========================================================================== */
-    .feedback-input-box {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      text-align: left;
-      opacity: 0;
-      transform: translateY(14px);
-      pointer-events: none;
-      transition: var(--transition-smooth);
-      max-height: 0;
-      overflow: hidden;
-    }
-
-    .feedback-input-box.activated {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-      max-height: 300px;
-      margin-top: 10px;
-    }
-
-    .feedback-input-box label {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .feedback-input-box textarea {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid var(--border);
-      padding: 14px 18px;
-      border-radius: var(--radius-md);
-      color: #fff;
-      font-family: var(--font-body);
-      font-size: 14px;
-      resize: none;
-      height: 100px;
-      transition: var(--transition-smooth);
-      width: 100%;
-    }
-
-    .feedback-input-box textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.15);
-    }
-
-    .action-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .btn {
-      background: var(--primary);
-      color: #fff;
-      border: 1px solid transparent;
-      padding: 12px 24px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      flex: 1;
-    }
-
-    .btn:hover {
-      background: #ff7640;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.2);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.03);
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: none;
-    }
-
-    /* ==========================================================================
-       6. RESPONSE ALERTS LAYER
-       ========================================================================== */
-    .success-alert-overlay {
-      position: absolute;
-      inset: 0;
-      background: var(--card);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(0.95);
-      transition: var(--transition-smooth);
-      z-index: 10;
-      padding: 40px;
-    }
-
-    .success-alert-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-      transform: scale(1);
-    }
-
-    .success-alert-overlay i {
-      font-size: 48px;
-      color: var(--primary);
-      animation: iconPop 0.6s var(--transition-bounce) both;
-    }
-
-    @keyframes iconPop {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* ==========================================================================
-       7. MOBILE RESPONSIVE ENGINE RULES
-       ========================================================================== */
-    @media (max-width: 540px) {
-      .container {
-        padding: 40px 24px;
-      }
-      .title {
-        font-size: 1.85rem;
-      }
-      .star-cell {
-        width: 40px;
-        height: 40px;
-      }
-      .star-vector-backdrop,
-      .star-vector-foreground {
-        font-size: 36px;
-      }
-    }
-  </style>
+  <title>Star Rating Component</title>
+  <link rel="stylesheet" href="starrating.css">
+  <script src="js/loader.js" defer></script>
+  <link rel="stylesheet" href="shared-sidebar.css">
 </head>
 <body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
 
-  <div class="container" id="ratingComponentContainer">
-    
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = 'components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+  <div class="container">
     <h1 class="title">⭐ Star Rating Component</h1>
     <p class="subtitle">Hover seamlessly to preview, click to lock your evaluation framework. Full mobile adaptive gesture support.</p>
 
