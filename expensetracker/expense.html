@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes'; style-src-attr 'unsafe-hashes'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,73 +9,1228 @@
   <link rel="stylesheet" href="expense.css">
 </head>
 <body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
 
-  <div class="dashboard">
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
 
-    <div class="top-section">
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
 
-      <div class="card balance-card">
-        <h3>Total Balance</h3>
-        <h1 id="balance">₹45,000</h1>
-      </div>
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
 
-      <div class="card income-card">
-        <h3>Income</h3>
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="dashboard">
+
+    <header class="header">
+        <div>
+            <h1>Expense Tracker</h1>
+            <p>Manage your finances smarter</p>
+        </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
+        </div>
+
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
+        </div>
+
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="overview">
+
+    <div class="card balance-card">
+        <span>💳 Total Balance</span>
+        <h2>₹45,000</h2>
+        <small>↑ 12.5% from last month</small>
+    </div>
+
+    <div class="card income-card">
+        <span>📈 Income</span>
         <h2>₹60,000</h2>
-      </div>
+    </div>
 
-      <div class="card expense-card">
-        <h3>Expenses</h3>
+    <div class="card expense-card">
+        <span>📉 Expenses</span>
         <h2>₹15,000</h2>
-      </div>
+    </div>
+
+</section>
+
+
+<section class="stats-grid">
+
+    <div class="card">
+        <span>💰 Savings</span>
+        <h3>₹45,000</h3>
+    </div>
+
+    <div class="card">
+        <span>🧾 Transactions</span>
+        <h3>24</h3>
+    </div>
+
+    <div class="card">
+        <span>🎯 Budget Left</span>
+        <h3>₹20,000</h3>
+    </div>
+
+    <div class="card">
+        <span>📊 Monthly Goal</span>
+        <h3>75%</h3>
+    </div>
+
+</section>
+
+<div class="add-expense card">
+
+    <h2>Add Transaction</h2>
+
+    <label for="expenseName">
+        Transaction Name
+    </label>
+
+    <input
+        id="expenseName"
+        type="text"
+        placeholder="e.g. Grocery Shopping">
+
+    <label for="expenseAmount">
+        Amount
+    </label>
+
+    <input
+        id="expenseAmount"
+        type="number"
+        placeholder="₹0">
+
+    <label for="category">
+        Category
+    </label>
+
+    <select id="category">
+        <option>Food</option>
+        <option>Travel</option>
+        <option>Bills</option>
+        <option>Shopping</option>
+        <option>Salary</option>
+    </select>
+
+    <label for="transactionType">
+        Type
+    </label>
+
+    <select id="transactionType">
+        <option>Expense</option>
+        <option>Income</option>
+    </select>
+
+    <button id="addBtn">
+        + Add Transaction
+    </button>
+
+</div>
+
+<div class="transaction">
+
+    <div class="left">
+
+        <div class="icon">
+            🛒
+        </div>
+
+        <div>
+
+            <strong>Groceries</strong>
+
+            <small>Today • Food</small>
+
+        </div>
 
     </div>
 
-    <div class="bottom-section">
+    <p class="expense-text">
+        - ₹2,000
+    </p>
 
-      <div class="transactions">
+</div>
+
+
+    <section class="content">
+
+        <div class="transactions card">
 
         <h2>Recent Transactions</h2>
 
-        <div class="transaction">
-          <span>Groceries</span>
-          <p>- ₹2,000</p>
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+<div class="dashboard">
+
+<div class="dashboard">
+
+    <header class="header">
+        <div>
+            <h1>Expense Tracker</h1>
+            <p>Manage your finances smarter</p>
         </div>
 
-        <div class="transaction">
-          <span>Freelance Payment</span>
-          <p class="income">+ ₹12,000</p>
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
         </div>
 
-        <div class="transaction">
-          <span>Electricity Bill</span>
-          <p>- ₹1,500</p>
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
         </div>
 
-        <div class="transaction">
-          <span>Movie Tickets</span>
-          <p>- ₹800</p>
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
         </div>
 
-      </div>
+    </section>
 
-      <div class="add-expense">
+    <section class="content">
 
-        <h2>Add Expense</h2>
+        <div class="transactions card">
+
+            <div class="section-title">
+                <h2>Recent Transactions</h2>
+                <button class="view-btn">
+                    View All
+                </button>
+            </div>
+        <input type="text" id="expenseName" placeholder="Expense Name" data-a11y-remediation="label-needed">
+
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+<div class="dashboard">
+
+    <header class="header">
+        <div>
+            <h1>Expense Tracker</h1>
+            <p>Manage your finances smarter</p>
+        </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
+        </div>
+
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
+        </div>
+
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="content">
+
+        <div class="transactions card">
+
+            <div class="section-title">
+                <h2>Recent Transactions</h2>
+                <button class="view-btn">
+                    View All
+                </button>
+            </div>
+        <input type="text" id="expenseName" placeholder="Expense Name" data-a11y-remediation="label-needed">
+
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+<div class="dashboard">
+
+    <header class="header">
+        <div>
+            <h1>Expense Tracker</h1>
+            <p>Manage your finances smarter</p>
+        </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
+        </div>
+
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
+        </div>
+
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
+        </div>
+
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="content">
+
+        <div class="transactions card">
+
+            <div class="section-title">
+                <h2>Recent Transactions</h2>
+                <button class="view-btn">
+                    View All
+                </button>
+            </div>
+        <input type="text" id="expenseName" placeholder="Expense Name" data-a11y-remediation="label-needed">
+
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+
+<div class="dashboard">
+
+    <header class="header">
+        <div>
+            <h1>Expense Tracker</h1>
+            <p>Manage your finances smarter</p>
+        </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="content">
+
+        <div class="transactions card">
+
+            <div class="section-title">
+                <h2>Recent Transactions</h2>
+                <button class="view-btn">
+                    View All
+                </button>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+        </div>
+
+        <div class="add-expense card">
+
+            <h2>Add Transaction</h2>
+
+            <input
+                type="text"
+                id="expenseName"
+                placeholder="Expense Name">
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
+        </div>
+
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
+        </div>
+
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="content">
+
+        <div class="transactions card">
+
+            <div class="section-title">
+                <h2>Recent Transactions</h2>
+                <button class="view-btn">
+                    View All
+                </button>
+            </div>
+        <input type="text" id="expenseName" placeholder="Expense Name" data-a11y-remediation="label-needed">
+
+            <select>
+                <option>Expense</option>
+                <option>Income</option>
+            </select>
+
+            <button id="addBtn">
+                + Add Transaction
+            </button>
+
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+
+<div class="dashboard">
+
+    <header class="header">
+        <div>
+            <h1>Expense Tracker</h1>
+            <p>Manage your finances smarter</p>
+        </div>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/100" alt="user">
+        </div>
+    </header>
+
+    <section class="overview">
+
+        <div class="card balance-card">
+            <span>Total Balance</span>
+            <h2 id="balance">₹45,000</h2>
+
+            <div class="trend positive">
+                ↑ 12.5% this month
+            </div>
+        </div>
+
+        <div class="card income-card">
+            <span>Income</span>
+            <h3>₹60,000</h3>
+
+            <div class="progress">
+                <div class="bar income"></div>
+            </div>
+        </div>
+
+        <div class="card expense-card">
+            <span>Expenses</span>
+            <h3>₹15,000</h3>
+
+            <div class="progress">
+                <div class="bar expense"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="content">
+
+        <div class="transactions card">
+
+            <div class="section-title">
+                <h2>Recent Transactions</h2>
+                <button class="view-btn">
+                    View All
+                </button>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🛒 Groceries
+                </div>
+                <p class="expense-text">- ₹2,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    💼 Freelance Payment
+                </div>
+                <p class="income-text">+ ₹12,000</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    ⚡ Electricity Bill
+                </div>
+                <p class="expense-text">- ₹1,500</p>
+            </div>
+
+            <div class="transaction">
+                <div class="left">
+                    🎬 Movie Tickets
+                </div>
+                <p class="expense-text">- ₹800</p>
+            </div>
+
+        </div>
+
+        <div class="add-expense card">
+
+            <h2>Add Transaction</h2>
+
+            <input
+                type="text"
+                id="expenseName"
+                placeholder="Expense Name">
 
         <input type="text" id="expenseName" placeholder="Expense Name">
+            <input
+                type="number"
+                id="expenseAmount"
+                placeholder="Amount">
+        <input type="text" id="expenseName" placeholder="Expense Name" data-a11y-remediation="label-needed">
 
-        <input type="number" id="expenseAmount" placeholder="Amount">
+            <select>
+                <option>Expense</option>
+                <option>Income</option>
+            </select>
 
-        <button id="addBtn">
-          Add Transaction
-        </button>
+            <button id="addBtn">
+                + Add Transaction
+            </button>
 
-      </div>
+        </div>
 
+    </section>
+
+</div>
+
+<div class="section-title">
+    <h2>Recent Transactions</h2>
+    <button class="view-btn">
+        View All
+    </button>
+</div>
+
+<label for="expenseName">Transaction Name</label>
+<input
+    type="text"
+    id="expenseName"
+    placeholder="Expense Name">
+
+<label for="expenseAmount">Amount</label>
+<input
+    type="number"
+    id="expenseAmount"
+    placeholder="Amount">
+
+<label for="transactionType">Type</label>
+<select id="transactionType">
+    <option value="expense">Expense</option>
+    <option value="income">Income</option>
+</select>
+
+<section class="stats-grid">
+
+    <div class="card">
+        <span>Savings</span>
+        <h3 id="savings">₹45,000</h3>
     </div>
 
-  </div>
+    <div class="card">
+        <span>Transactions</span>
+        <h3 id="transactionCount">24</h3>
+    </div>
+
+    <div class="card">
+        <span>Budget Left</span>
+        <h3 id="budgetLeft">₹20,000</h3>
+    </div>
+
+</section>
+
+<label for="category">Category</label>
+
+<select id="category">
+    <option>Food</option>
+    <option>Shopping</option>
+    <option>Bills</option>
+    <option>Travel</option>
+    <option>Entertainment</option>
+    <option>Salary</option>
+    <option>Freelance</option>
+</select>
+
+<script src="expense.js"></script>
+            <select>
+                <option>Expense</option>
+                <option>Income</option>
+            </select>
+
+            <button id="addBtn">
+                + Add Transaction
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+
+  <script src="expense.js"></script>
+      <script src="../dist/shared.js"></script>
 
   <script src="expense.js"></script>
 </body>

@@ -1,15 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes'; style-src-attr 'unsafe-hashes'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes' 'sha256-CUn7mujaYO8Du+9K4FiVwVZCH41cyR7zN7+uF1k0d6I='; style-src-attr 'unsafe-hashes' 'sha256-CUn7mujaYO8Du+9K4FiVwVZCH41cyR7zN7+uF1k0d6I='">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battery Status Widget UI</title>
+  <!-- Fonts -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Icons -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
   <link rel="stylesheet" href="battery.css">
 </head>
 <body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
 
-  <div class="battery-widget">
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="power-header">
+
+  <div class="logo">
+    ⚡ PowerCore
+  </div>
+
+  <nav>
+
+    <a href="#">Dashboard</a>
+    <a href="#">Battery</a>
+    <a href="#">Performance</a>
+    <a href="#">Energy</a>
+    <a href="#">Settings</a>
+
+  </nav>
+
+  <button class="header-btn">
+    Optimize System
+  </button>
+
+</header>
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            ⚡ POWER MANAGEMENT SYSTEM
+        </span>
+
+        <h1>
+            Smart Battery Dashboard
+        </h1>
+
+        <p>
+            Monitor battery health, charging speed,
+            power consumption and system efficiency
+            in real time.
+        </p>
+
+    </div>
+
+</section>
+<section class="power-grid">
+  
+  <!-- Charging Speed -->
+
+  <div class="power-card">
+
+    <h3>⚡ Charging Speed</h3>
+
+    <p>
+      Real-time charging wattage flowing into device.
+    </p>
+
+    <div class="charging-speed" id="speedValue">
+      65W
+    </div>
+
+  </div>
+
+  <!-- Temperature -->
+
+  <div class="power-card">
+
+    <h3>🌡 Battery Temperature</h3>
+
+    <p>
+      Monitor thermal performance during charging.
+    </p>
+
+    <div id="tempValue">
+      34°C
+    </div>
+
+  </div>
+  
+
+  <!-- Battery Health -->
+
+  <div class="power-card">
+
+    <h3>❤️ Battery Health</h3>
+
+    <p>
+      Long-term battery capacity retention.
+    </p>
+
+    <div class="health-circle">
+
+      <span id="healthValue">
+        95%
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- Charging Animation -->
+
+  <div class="power-card">
+
+    <h3>🔋 Live Charging Flow</h3>
+
+    <p>
+      Visualizing energy transfer in real time.
+    </p>
+
+    <div class="energy-flow">
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </div>
+
+  </div>
+
+  <!-- Power Consumption -->
+
+  <div class="power-card">
+
+    <h3>📊 Power Usage</h3>
+
+    <p>
+      Current system power consumption.
+    </p>
+
+    <div id="usageValue">
+      25%
+    </div>
+
+  </div>
+
+  <!-- Charging Cycles -->
+
+  <div class="power-card">
+
+    <h3>🔄 Charge Cycles</h3>
+
+    <p>
+      Number of completed charging cycles.
+    </p>
+
+    <div id="cycleValue">
+      120
+    </div>
+
+  </div>
+  
+  <div class="power-card fast-charge-card">
+    <h3>🔥 Fast Charging Detector</h3>
+    <p>Detects current charging mode.</p>
+
+    <div id="chargeMode" class="charge-mode">
+        Fast Charging
+    </div>
+</div>
+<div class="power-card solar-card">
+    <h3>☀ Solar Charging</h3>
+    <p>Solar panel energy harvesting.</p>
+
+    <div class="sun"></div>
+
+    <div id="solarPower">
+        180W
+    </div>
+</div>
+<div class="power-card surge-card">
+    <h3>⚡ Power Surge Monitor</h3>
+    <p>Live voltage fluctuation tracking.</p>
+
+    <div id="voltageValue">
+        220V
+    </div>
+</div>
+<div class="power-card score-card">
+    <h3>🎯 Optimization Score</h3>
+
+    <div class="score-circle">
+        <span id="optimizationScore">
+            92
+        </span>
+    </div>
+</div>
+<div class="power-card carbon-card">
+    <h3>🌍 Carbon Footprint Saved</h3>
+
+    <p>Eco-friendly energy impact.</p>
+
+    <div id="carbonSaved">
+        12.5 kg
+    </div>
+</div>
+<div class="power-card ev-card">
+    <h3>🚗 EV Battery Simulator</h3>
+
+    <div class="car-track">
+
+        <div id="evCar">
+            🚗
+        </div>
+
+    </div>
+
+    <div id="evCharge">
+        72%
+    </div>
+</div>
+<div class="power-card efficiency-card">
+
+    <h3>💎 Energy Efficiency</h3>
+
+    <div class="efficiency-ring">
+        <span id="efficiencyValue">
+            88%
+        </span>
+    </div>
+
+</div>
+<div class="power-card wireless-card">
+
+    <h3>🛰 Wireless Charging</h3>
+
+    <div class="wireless-ripple">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="wirelessPower">
+        Connected
+    </div>
+
+</div>
+<div class="power-card performance-card">
+
+    <h3>⚙ Device Performance</h3>
+
+    <div class="perf-item">
+        CPU
+        <div class="perf-bar">
+            <div id="cpuBar"></div>
+        </div>
+    </div>
+
+    <div class="perf-item">
+        RAM
+        <div class="perf-bar">
+            <div id="ramBar"></div>
+        </div>
+    </div>
+
+    <div class="perf-item">
+        GPU
+        <div class="perf-bar">
+            <div id="gpuBar"></div>
+        </div>
+    </div>
+
+</div>
+<div class="power-card prediction-card">
+
+    <h3>🚀 Battery Life Prediction</h3>
+
+    <p>Estimated remaining runtime.</p>
+
+    <div id="batteryPrediction">
+        4h 25m Remaining
+    </div>
+
+</div>
+<div class="power-card shield-card">
+
+    <h3>🛡 Battery Shield</h3>
+
+    <p>
+        AI-powered thermal protection monitoring.
+    </p>
+
+    <div class="shield-core">
+
+        <span id="shieldTemp">
+            34°C
+        </span>
+
+    </div>
+
+</div>
+<div class="power-card sleep-card">
+
+    <h3>🌙 Smart Charging</h3>
+
+    <p>
+        Optimizes charging overnight.
+    </p>
+
+    <div id="sleepStatus">
+        Paused at 80%
+    </div>
+
+</div>
+<div class="power-card recovery-card">
+
+    <h3>⚡ Energy Recovery</h3>
+
+    <p>
+        Energy reclaimed from smart optimization.
+    </p>
+
+    <div class="recovery-bar">
+
+        <div id="recoveryFill"></div>
+
+    </div>
+
+    <div id="recoveryValue">
+        48%
+    </div>
+
+</div>
+<div class="power-card safety-card">
+
+    <h3>🚨 Safety Monitor</h3>
+
+    <p>
+        Real-time battery risk detection.
+    </p>
+
+    <div id="safetyStatus">
+        SAFE
+    </div>
+
+</div>
+<div class="battery-widget">
 
     <h1>Battery Status</h1>
 
@@ -45,7 +797,60 @@
     </button>
 
   </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col brand">
+      <h2 class="footer-logo">⬡ UIverse</h2>
+      <p>Build modern, reusable UI components with clean HTML, CSS, and JavaScript.</p>
+      <div class="socials">
+        <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="button.html">Buttons</a></li>
+        <li><a href="navbar.html">Navbars</a></li>
+        <li><a href="cards.html">Cards</a></li>
+        <li><a href="inputs.html">Inputs</a></li>
+        <li><a href="forms.html">Forms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">GitHub Repo</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-col newsletter">
+      <h3>Stay Updated</h3>
+      <p>Get notified when new components drop.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com">
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 UIverse. Made with ❤️ for developers worldwide.</p>
+  </div>
+</footer>
+  
 
   <script src="battery.js"></script>
+      <script src="../dist/shared.js"></script>
 </body>
 </html>

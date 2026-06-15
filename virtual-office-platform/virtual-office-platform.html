@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes' 'sha256-+GSFEFRNW7owrBBjTdxxeIOfGwLBwAOISH3sePaKc2I=' 'sha256-MdTW+RKtS3HqClPkTSomf6GU1AjZ0WeNclkMzbOjRKE=' 'sha256-tpWMbUlP5Uw0VavQx+88OMYf+mw5b4WiOzPF2oUguaY='; style-src-attr 'unsafe-hashes' 'sha256-+GSFEFRNW7owrBBjTdxxeIOfGwLBwAOISH3sePaKc2I=' 'sha256-MdTW+RKtS3HqClPkTSomf6GU1AjZ0WeNclkMzbOjRKE=' 'sha256-tpWMbUlP5Uw0VavQx+88OMYf+mw5b4WiOzPF2oUguaY='">
 
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0" />
@@ -29,8 +30,10 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ================= SIDEBAR ================= -->
+
+  <!-- SIDEBAR -->
 
   <aside class="sidebar">
 
@@ -93,19 +96,86 @@
         Product Manager
       </p>
 
-      <button>
+      <button data-a11y-remediation="button-label-needed">
         Start Meeting
       </button>
 
     </div>
 
   </aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
 
-  <!-- ================= MAIN ================= -->
+
+  <!-- MAIN -->
 
   <main class="main">
 
-    <!-- ================= TOPBAR ================= -->
+    <!-- TOPBAR -->
 
     <header class="topbar">
 
@@ -116,7 +186,7 @@
         </h1>
 
         <p>
-          Collaborate with teams, manage meetings and boost productivity remotely.
+          Collaborate with teams remotely and boost productivity.
         </p>
 
       </div>
@@ -128,7 +198,7 @@
           <i class="fa-solid fa-magnifying-glass"></i>
 
           <input type="text"
-            placeholder="Search workspace..." />
+            placeholder="Search workspace..." / data-a11y-remediation="label-needed">
 
         </div>
 
@@ -136,11 +206,15 @@
           <i class="fa-solid fa-bell"></i>
         </button>
 
+        <button class="theme-toggle">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
       </div>
 
     </header>
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -157,8 +231,7 @@
 
         <p>
           Connect teams with smart meetings,
-          collaborative workspaces, productivity tracking
-          and seamless communication tools.
+          collaborative workspaces and productivity tracking.
         </p>
 
         <div class="hero-buttons">
@@ -201,61 +274,118 @@
 
     </section>
 
-    <!-- ================= STATS ================= -->
+    <!-- STATS -->
 
     <section class="stats-grid">
 
-      <div class="stat-card purple">
+      <div class="stat-card">
+        <h2>124</h2>
+        <p>Active Employees</p>
+      </div>
 
-        <h2>
-          124
-        </h2>
+      <div class="stat-card">
+        <h2>28</h2>
+        <p>Scheduled Meetings</p>
+      </div>
 
-        <p>
-          Active Employees
-        </p>
+      <div class="stat-card">
+        <h2>92%</h2>
+        <p>Productivity Score</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>16</h2>
+        <p>Shared Projects</p>
+      </div>
+
+    </section>
+
+    <!-- QUICK ACTIONS -->
+
+    <section class="quick-actions">
+
+      <button>
+        <i class="fa-solid fa-video"></i>
+        New Meeting
+      </button>
+
+      <button>
+        <i class="fa-solid fa-folder"></i>
+        Workspace
+      </button>
+
+      <button>
+        <i class="fa-solid fa-share-nodes"></i>
+        Share Files
+      </button>
+
+      <button>
+        <i class="fa-solid fa-user-plus"></i>
+        Invite Team
+      </button>
+
+    </section>
+
+    <!-- ANALYTICS -->
+
+    <section class="analytics-section">
+
+      <div class="analytics-card">
+
+        <h3>Team Performance</h3>
+
+        <div class="progress-item">
+          <span>Development</span>
+
+          <div class="progress-bar">
+            <div class="progress-fill"
+              style="width:92%">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="progress-item">
+          <span>Design</span>
+
+          <div class="progress-bar">
+            <div class="progress-fill blue"
+              style="width:78%">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="progress-item">
+          <span>Marketing</span>
+
+          <div class="progress-bar">
+            <div class="progress-fill pink"
+              style="width:84%">
+            </div>
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="stat-card blue">
+      <div class="clock-card">
 
-        <h2>
-          28
-        </h2>
+        <h3>Current Time</h3>
 
-        <p>
-          Scheduled Meetings
-        </p>
-
-      </div>
-
-      <div class="stat-card pink">
-
-        <h2>
-          92%
-        </h2>
+        <div id="liveClock">
+          00:00:00
+        </div>
 
         <p>
-          Productivity Score
-        </p>
-
-      </div>
-
-      <div class="stat-card green">
-
-        <h2>
-          16
-        </h2>
-
-        <p>
-          Shared Projects
+          Global Workspace Sync
         </p>
 
       </div>
 
     </section>
 
-    <!-- ================= TEAM SECTION ================= -->
+    <!-- TEAM SECTION -->
 
     <section class="team-section">
 
@@ -273,8 +403,6 @@
 
       <div class="team-grid">
 
-        <!-- CARD -->
-
         <div class="team-card">
 
           <div class="team-image purple-bg">
@@ -289,21 +417,7 @@
             24 Members • Building new features
           </p>
 
-          <div class="team-footer">
-
-            <span>
-              8 Tasks Pending
-            </span>
-
-            <button class="manage-btn">
-              Open
-            </button>
-
-          </div>
-
         </div>
-
-        <!-- CARD -->
 
         <div class="team-card">
 
@@ -319,21 +433,7 @@
             12 Members • UI/UX collaboration
           </p>
 
-          <div class="team-footer">
-
-            <span>
-              3 Reviews
-            </span>
-
-            <button class="manage-btn">
-              Open
-            </button>
-
-          </div>
-
         </div>
-
-        <!-- CARD -->
 
         <div class="team-card">
 
@@ -349,25 +449,13 @@
             18 Members • Campaign strategy
           </p>
 
-          <div class="team-footer">
-
-            <span>
-              5 Campaigns
-            </span>
-
-            <button class="manage-btn">
-              Open
-            </button>
-
-          </div>
-
         </div>
 
       </div>
 
     </section>
 
-    <!-- ================= MEETING SECTION ================= -->
+    <!-- MEETINGS -->
 
     <section class="meeting-section">
 
@@ -380,8 +468,6 @@
       </div>
 
       <div class="meeting-list">
-
-        <!-- ITEM -->
 
         <div class="meeting-item">
 
@@ -411,8 +497,6 @@
 
         </div>
 
-        <!-- ITEM -->
-
         <div class="meeting-item">
 
           <div class="meeting-left">
@@ -441,36 +525,6 @@
 
         </div>
 
-        <!-- ITEM -->
-
-        <div class="meeting-item">
-
-          <div class="meeting-left">
-
-            <div class="meeting-icon pink-bg">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-
-            <div>
-
-              <h3>
-                Weekly Analytics Review
-              </h3>
-
-              <p>
-                4:00 PM • Microsoft Teams
-              </p>
-
-            </div>
-
-          </div>
-
-          <button class="join-btn">
-            Join
-          </button>
-
-        </div>
-
       </div>
 
     </section>
@@ -481,6 +535,7 @@
 
   <script src="virtual-office-platform.js"></script>
 
+      <script src="../dist/shared.js"></script>
 </body>
 
 </html>

@@ -1,92 +1,595 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes'; style-src-attr 'unsafe-hashes'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live Cricket Score UI</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  </head>
 <body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
 
   <header>
     <h1>🏏 Live Cricket Score</h1>
+    <hr>
   </header>
 
-  <main class="container">
+  <main>
 
-    <!-- Live Score Card -->
-    <section class="card live-score">
+    <!-- LIVE SCORE -->
+    <section>
+
       <h2>India vs Australia</h2>
 
-      <div class="score-box">
-        <div>
-          <h3>IND</h3>
-          <p id="indiaScore">182/4</p>
-        </div>
+      <table border="1" cellpadding="15" cellspacing="0" width="100%">
+        <tr>
+          <th>Team</th>
+          <th>Score</th>
+        </tr>
 
-        <div>
-          <h3>AUS</h3>
-          <p>178/8</p>
-        </div>
-      </div>
+        <tr>
+          <td>IND</td>
+          <td id="indiaScore">182/4</td>
+        </tr>
 
-      <p class="status">India need 7 runs in 12 balls</p>
+        <tr>
+          <td>AUS</td>
+          <td>178/8</td>
+        </tr>
+      </table>
+
+      <br>
+
+      <p id="matchStatus">
+        India need 7 runs in 12 balls
+      </p>
+
     </section>
 
-    <!-- Match Statistics -->
-    <section class="card">
+    <header class="hero">
+    <h1>🏏 Live Cricket Score</h1>
+    <span class="live-badge">LIVE</span>
+</header>
+
+<section class="score-card">
+    <div class="team">
+        <h2>🇮🇳 India</h2>
+        <p class="score">182/4</p>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="team">
+        <h2>🇦🇺 Australia</h2>
+        <p class="score">178/8</p>
+    </div>
+</section>
+
+<div class="status">
+    India need <strong>7 runs</strong> from
+    <strong>12 balls</strong>
+</div>
+
+
+    <hr>
+
+    <!-- MATCH STATISTICS -->
+    <section>
+
       <h2>Match Statistics</h2>
 
-      <div class="stats">
-        <div class="stat-box">
-          <h3>Overs</h3>
-          <p>18.0</p>
-        </div>
+      <table border="1" cellpadding="15" cellspacing="0" width="100%">
 
-        <div class="stat-box">
-          <h3>Run Rate</h3>
-          <p>10.1</p>
-        </div>
+        <tr>
+          <th>Overs</th>
+          <th>Run Rate</th>
+          <th>Boundaries</th>
+        </tr>
 
-        <div class="stat-box">
-          <h3>Boundaries</h3>
-          <p>24</p>
-        </div>
-      </div>
+        <tr>
+          <td>18.0</td>
+          <td>10.1</td>
+          <td>24</td>
+        </tr>
+
+      </table>
+
     </section>
 
-    <!-- Team Comparison -->
-    <section class="card">
+    <hr>
+
+    <!-- TEAM COMPARISON -->
+    <section>
+
       <h2>Team Comparison</h2>
 
-      <div class="comparison">
-        <div>
-          <h3>India</h3>
-          <div class="bar india"></div>
-        </div>
+      <table border="1" cellpadding="15" cellspacing="0" width="100%">
 
-        <div>
-          <h3>Australia</h3>
-          <div class="bar aus"></div>
-        </div>
-      </div>
+        <tr>
+          <th>Team</th>
+          <th>Performance</th>
+        </tr>
+
+        <tr>
+          <td>India</td>
+          <td>82%</td>
+        </tr>
+
+        <tr>
+          <td>Australia</td>
+          <td>76%</td>
+        </tr>
+
+      </table>
+
     </section>
 
-    <!-- Recent Matches -->
-    <section class="card">
+    <hr>
+
+    <!-- RECENT MATCHES -->
+    <section>
+
       <h2>Recent Matches</h2>
 
-      <div class="matches">
-        <div class="match-card">IND beat ENG by 5 wickets</div>
-        <div class="match-card">AUS beat NZ by 12 runs</div>
-        <div class="match-card">PAK beat SA by 3 wickets</div>
-      </div>
+      <ul>
+        <li>IND beat ENG by 5 wickets</li>
+        <li>AUS beat NZ by 12 runs</li>
+        <li>PAK beat SA by 3 wickets</li>
+      </ul>
+
+    </section>
+
+    <hr>
+
+    <!-- TOP PLAYERS -->
+    <section>
+
+      <h2>Top Players</h2>
+
+      <table border="1" cellpadding="15" cellspacing="0" width="100%">
+
+        <tr>
+          <th>Player</th>
+          <th>Runs</th>
+          <th>Strike Rate</th>
+        </tr>
+
+        <tr>
+          <td>Virat Kohli</td>
+          <td>78</td>
+          <td>145.2</td>
+        </tr>
+
+        <tr>
+          <td>Rohit Sharma</td>
+          <td>54</td>
+          <td>138.4</td>
+        </tr>
+
+        <tr>
+          <td>Steve Smith</td>
+          <td>63</td>
+          <td>132.5</td>
+        </tr>
+
+      </table>
+
+    </section>
+
+    <hr>
+
+    <!-- MATCH INFO -->
+    <section>
+
+      <h2>Match Info</h2>
+
+      <p><strong>Venue:</strong> Wankhede Stadium</p>
+      <p><strong>Format:</strong> T20 International</p>
+      <p><strong>Toss:</strong> India won the toss and chose to bat</p>
+
     </section>
 
   </main>
 
-  <script src="script.js"></script>
+        <script src="../dist/shared.js"></script>
 </body>
 </html>

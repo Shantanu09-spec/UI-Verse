@@ -1,14 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes' 'sha256-XriXHWKMwk2T+JOvuAt7cij0Iacl5D/SqRKl7ZgDNZ4='; script-src-attr 'unsafe-hashes' 'sha256-XriXHWKMwk2T+JOvuAt7cij0Iacl5D/SqRKl7ZgDNZ4='; style-src 'self' https: 'unsafe-hashes'; style-src-attr 'unsafe-hashes'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cyberpunk Command Console</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
 
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  </head>
+<body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+  <header class="cyber-header">
+
+  <div class="logo-area">
+    <div class="logo-glow"></div>
+    <h1>CYBER<span>CORE</span></h1>
+  </div>
+
+  <nav class="cyber-nav">
+    <a href="#">Dashboard</a>
+    <a href="#">Terminal</a>
+    <a href="#">AI</a>
+    <a href="#">Analytics</a>
+    <a href="#">Security</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="scan-btn">SCAN</button>
+  </div>
+
+</header>
+<section class="hero">
+
+    <div class="hero-content">
+        <div class="hero-badge">
+            SYSTEM ONLINE
+        </div>
+
+        <h2>Cyberpunk AI Command Center</h2>
+
+        <p>
+            Execute commands, monitor system health,
+            manage AI modules and control futuristic
+            digital operations.
+        </p>
+
+        <button class="launch-btn">
+            Launch Console
+        </button>
+    </div>
+
+</section>
   <div class="console-container">
+    
     <div class="console-header">
       <span class="dot red"></span>
       <span class="dot yellow"></span>
@@ -21,11 +474,335 @@
     </div>
 
     <div class="input-area">
-      <span>>></span>
-      <input type="text" id="commandInput" placeholder="Enter command...">
+      <span class="prompt">>></span>
+      <input 
+        type="text" 
+        id="commandInput" 
+        placeholder="Enter command..." 
+        autocomplete="off"
+       data-a11y-remediation="label-needed">
     </div>
+
+  </div>
+  <section class="widgets-grid">
+<div class="widget neural-core">
+    <h3>🧠 Neural Core</h3>
+    <div class="core"></div>
+    <p>AI Processing: 92%</p>
+    <p>The Neural Core powers advanced computations, handling deep learning tasks and real-time decision-making.</p>
+</div>
+<div class="widget shield-card">
+    <h3>🛡 Security Shield</h3>
+    <div class="shield-level">
+        <span id="shieldPercent">100%</span>
+        <p>The Security Shield ensures maximum protection, monitoring threats and maintaining system integrity.</p>
+    </div>
+</div>
+<div class="widget crypto-card">
+    <h3>₿ Crypto Node</h3>
+    <div id="cryptoPrice">$0</div>
+    <p>The Crypto Node tracks blockchain activity, displaying live cryptocurrency values and transaction health.</p>
+</div>
+<div class="widget network-card">
+    <h3>🌐 Network Traffic</h3>
+    <div id="networkSpeed">0 GB/s</div>
+    <p>Network Traffic monitors data flow, showing real-time bandwidth usage and connection stability.</p>
+</div>
+<div class="widget holo-clock">
+    <h3>🕒 Quantum Clock</h3>
+    <div id="clock"></div>
+     <p>The Quantum Clock provides precise timekeeping, synchronized across systems for accuracy and reliability.</p>
+</div>
+<div class="widget ai-card">
+    <h3>🤖 AI Assistant</h3>
+
+    <div id="aiMessage">
+        System Ready
+    </div>
+
+    <button id="changeMessage">
+        Generate Insight
+    </button>
+    <p>The AI Assistant delivers smart insights, responding to queries and assisting with automated tasks.</p>
+</div>
+<!-- 👁 FACE RECOGNITION SCANNER -->
+<div class="widget face-scanner">
+    <div class="scan-line"></div>
+
+    <div class="widget-icon">👁</div>
+
+    <h3>Face Recognition Scanner</h3>
+
+    <p>
+        Advanced biometric system actively scanning and
+        validating user identity through neural mapping.
+    </p>
+
+    <div class="face-status">
+        Identity Verified
+    </div>
+</div>
+
+
+<!-- 🔥 THREAT DETECTION RADAR -->
+<div class="widget threat-radar">
+
+    <div class="radar-circle">
+        <div class="radar-sweep"></div>
+    </div>
+
+    <h3>Threat Detection Radar</h3>
+
+    <p>
+        Monitoring nearby cyber threats and hostile
+        network activity in real time.
+    </p>
+
+    <div id="threatLevel">
+        Threat Level: LOW
+    </div>
+
+</div>
+
+
+<!-- 🤖 AI CHAT MODULE -->
+<div class="widget ai-module">
+
+    <div class="robot-face">
+        🤖
+    </div>
+
+    <h3>AI Chat Module</h3>
+
+    <p>
+        Neural assistant capable of providing tactical
+        insights and predictive analytics.
+    </p>
+
+    <button id="askAI">
+        Generate Response
+    </button>
+
+    <div id="aiResponse">
+        Awaiting Query...
+    </div>
+
+</div>
+
+
+<!-- 🏆 HACKER LEADERBOARD -->
+<div class="widget leaderboard">
+
+    <h3>🏆 Hacker Leaderboard</h3>
+
+    <p>
+        Top ranked cyber operatives currently active
+        across the global network.
+    </p>
+
+    <ul>
+        <li>ShadowX - 9800 XP</li>
+        <li>GhostByte - 9100 XP</li>
+        <li>CyberNova - 8750 XP</li>
+    </ul>
+
+</div>
+
+
+<!-- 🚀 SPACE MISSION TRACKER -->
+<div class="widget mission-card">
+
+    <div class="rocket">
+        🚀
+    </div>
+
+    <h3>Space Mission Tracker</h3>
+
+    <p>
+        Monitoring active exploration missions beyond
+        Earth's orbit.
+    </p>
+
+    <div id="missionProgress">
+        72%
+    </div>
+
+</div>
+
+
+<!-- 📡 SIGNAL STRENGTH -->
+<div class="widget signal-card">
+
+    <h3>📡 Signal Strength Monitor</h3>
+
+    <p>
+        Live transmission signal quality between
+        satellite communication nodes.
+    </p>
+
+    <div class="bars">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <div id="signalValue">
+        98%
+    </div>
+
+</div>
+
+
+<!-- 🎮 XP SYSTEM -->
+<div class="widget xp-card">
+
+    <h3>🎮 XP Level System</h3>
+
+    <p>
+        Track experience gained through completed
+        cyber operations and missions.
+    </p>
+
+    <div class="xp-bar">
+
+        <div id="xpFill"></div>
+
+    </div>
+
+    <div id="xpText">
+        Level 42
+    </div>
+
+</div>
+
+
+<!-- 💾 STORAGE VISUALIZER -->
+<div class="widget storage-card">
+
+    <h3>💾 Data Storage Visualizer</h3>
+
+    <p>
+        Displays current storage utilization across
+        encrypted cloud sectors.
+    </p>
+
+    <div class="storage-circle">
+
+        <span id="storageValue">
+            76%
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- 🔒 QUANTUM ENCRYPTION -->
+<div class="widget encryption-card">
+
+    <h3>🔒 Quantum Encryption Meter</h3>
+
+    <p>
+        Measures security strength and encryption
+        integrity of all data channels.
+    </p>
+
+    <div class="encrypt-bar">
+
+        <div id="encryptFill"></div>
+
+    </div>
+
+</div>
+
+
+<!-- 🧿 HOLOGRAPHIC PROFILE -->
+<div class="widget profile-card">
+
+    <div class="avatar">
+        🧿
+    </div>
+
+    <h3>Holographic User Profile</h3>
+
+    <p>
+        Interactive identity projection powered by
+        holographic rendering systems.
+    </p>
+
+    <div class="profile-stats">
+        Rank: Elite Operator
+    </div>
+
+</div>
+    
+
+</section>
+  
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col brand">
+      <h2 class="footer-logo">⬡ UIverse</h2>
+      <p>Build modern, reusable UI components with clean HTML, CSS, and JavaScript.</p>
+      <div class="socials">
+        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="button.html">Buttons</a></li>
+        <li><a href="navbar.html">Navbars</a></li>
+        <li><a href="cards.html">Cards</a></li>
+        <li><a href="inputs.html">Inputs</a></li>
+        <li><a href="forms.html">Forms</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Contribute</a></li>
+        <li><a href="#">GitHub Repo</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="#">License</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col newsletter">
+      <h3>Stay Updated</h3>
+      <p>Get notified when new components drop.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" />
+        <button type="button" onclick="subscribe()">Subscribe</button>
+      </div>
+    </div>
+
   </div>
 
-  <script src="script.js"></script>
+  <div class="footer-bottom">
+    <p>© 2026 UIverse. Made with ❤️ for developers worldwide.</p>
+  </div>
+</footer>
+  <!-- FIXED FILE NAME -->
+  <script src="scrit.js"></script>
+      <script src="../dist/shared.js"></script>
 </body>
 </html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes' 'sha256-64KsNTBym3AQgf7OOIEQqWlLlxRcCJX54CKyTbwfTSA=' 'sha256-Aoz1KeO6YsmXfVH7VbZyWRr0wzrxs4fodSvix6FaSYk=' 'sha256-FenE591vb8UyVKsEC4TDHJDm0MUL+E2uJjCPerjr2Yc=' 'sha256-S2lctZvDbPBwCLUQlcbTQ1oXrd/a4ckquxiyBGETdmo=' 'sha256-lCAQD4EmZkkuw7t13aa3iu6WNDq83UuiqvAjToQVfa4=' 'sha256-mpvUhV00HdLbPnfQZY5WAQWbWlnB9F3DspKqVC2YUGg=' 'sha256-nAHP2KhDhqRnA2aUZpJG1eSlgpyBn/Y8gD8hJubsbnI=' 'sha256-payyFLM9MpjHZK/PhB4RDNzhD28iC1lG5qDC55O9mDg='; script-src-attr 'unsafe-hashes' 'sha256-64KsNTBym3AQgf7OOIEQqWlLlxRcCJX54CKyTbwfTSA=' 'sha256-Aoz1KeO6YsmXfVH7VbZyWRr0wzrxs4fodSvix6FaSYk=' 'sha256-FenE591vb8UyVKsEC4TDHJDm0MUL+E2uJjCPerjr2Yc=' 'sha256-S2lctZvDbPBwCLUQlcbTQ1oXrd/a4ckquxiyBGETdmo=' 'sha256-lCAQD4EmZkkuw7t13aa3iu6WNDq83UuiqvAjToQVfa4=' 'sha256-mpvUhV00HdLbPnfQZY5WAQWbWlnB9F3DspKqVC2YUGg=' 'sha256-nAHP2KhDhqRnA2aUZpJG1eSlgpyBn/Y8gD8hJubsbnI=' 'sha256-payyFLM9MpjHZK/PhB4RDNzhD28iC1lG5qDC55O9mDg='; style-src 'self' https: 'unsafe-hashes' 'sha256-+VCBf5rk/7ynTUVWr5fe3RKGgwWWrZPe9WOXNgwY0Kk=' 'sha256-28tOPwghzOB+EMouKxZUu1NTuLU54IR1KV+hC6jvgWA=' 'sha256-7mmKmCXGStyhbx58bApPUkzsCo0bGH0tml1+opEImbY=' 'sha256-7tbpHH9cZiWRcgxF3SKdRaIzObhUpmyG+uLTzxBat4w=' 'sha256-BgzmrQ4ATFYJAMkCA8FYNeTz00OyZ+Lp4kS+0BTXcsM=' 'sha256-PcnIAdtr1NmNZcLFf5ftF5SvhkwLfoF+o79JrRr9ylA=' 'sha256-QBbi7uXAsUu8pu2K4pPEqTbwhU3iHbBKvYzZjnWotUU=' 'sha256-Wi3+8jbn12vus9Oq4FOqEUCOpuRG3clBaVvLZZ2b9Fs=' 'sha256-phLM/xEeFGN+ylI5JmdV7LYbtxxlQFZjO2eOqHSKyPc=' 'sha256-v5JoNl0f8Z3Bz8vL3Z/KpUNDGhKorhMkGdmSheUp5DE='; style-src-attr 'unsafe-hashes' 'sha256-+VCBf5rk/7ynTUVWr5fe3RKGgwWWrZPe9WOXNgwY0Kk=' 'sha256-28tOPwghzOB+EMouKxZUu1NTuLU54IR1KV+hC6jvgWA=' 'sha256-7mmKmCXGStyhbx58bApPUkzsCo0bGH0tml1+opEImbY=' 'sha256-7tbpHH9cZiWRcgxF3SKdRaIzObhUpmyG+uLTzxBat4w=' 'sha256-BgzmrQ4ATFYJAMkCA8FYNeTz00OyZ+Lp4kS+0BTXcsM=' 'sha256-PcnIAdtr1NmNZcLFf5ftF5SvhkwLfoF+o79JrRr9ylA=' 'sha256-QBbi7uXAsUu8pu2K4pPEqTbwhU3iHbBKvYzZjnWotUU=' 'sha256-Wi3+8jbn12vus9Oq4FOqEUCOpuRG3clBaVvLZZ2b9Fs=' 'sha256-phLM/xEeFGN+ylI5JmdV7LYbtxxlQFZjO2eOqHSKyPc=' 'sha256-v5JoNl0f8Z3Bz8vL3Z/KpUNDGhKorhMkGdmSheUp5DE='">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotics Control Panel</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+<main class="main-content">
+
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="logo-icon"><i class="ti ti-robot-face"></i></div>
+    <h1>Robotics Control Panel</h1>
+  </div>
+  <div class="header-right">
+    <div class="pill">CPU 72%</div>
+    <div class="pill">PING 12ms</div>
+    <div class="pill">MODE AUTO</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- STATUS -->
+  <section class="card card-status">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <div class="card-title"><span class="icon"><i class="ti ti-chart-arcs-3"></i></span> Robot Status</div>
+    <div class="status-grid">
+      <div class="status-item">
+        <div style="display:flex;align-items:center;">
+          <div class="status-dot dot-green"></div>
+          <span class="status-label">SYSTEM</span>
+        </div>
+        <span class="status-badge badge-green">ONLINE</span>
+      </div>
+      <div class="status-item">
+        <div style="display:flex;align-items:center;">
+          <div class="status-dot dot-blue"></div>
+          <span class="status-label">TASK</span>
+        </div>
+        <span class="status-badge badge-blue">ACTIVE</span>
+      </div>
+      <div class="status-item">
+        <div style="display:flex;align-items:center;">
+          <div class="status-dot dot-amber"></div>
+          <span class="status-label">POWER</span>
+        </div>
+        <span class="status-badge badge-amber">CHARGING</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BATTERY -->
+  <section class="card card-battery">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <div class="card-title"><span class="icon"><i class="ti ti-battery-3"></i></span> Battery & Sensors</div>
+    <div class="meter-group">
+      <div>
+        <div class="meter-label"><span>BATTERY LEVEL</span><span>84%</span></div>
+        <div class="progress-track"><div class="progress-fill fill-green"></div></div>
+      </div>
+      <div>
+        <div class="meter-label"><span>SENSOR ACCURACY</span><span>92%</span></div>
+        <div class="progress-track"><div class="progress-fill fill-cyan"></div></div>
+      </div>
+      <div>
+        <div class="meter-label"><span>MOTOR EFFICIENCY</span><span>67%</span></div>
+        <div class="progress-track"><div class="progress-fill fill-blue"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROLS -->
+  <section class="card card-controls" style="text-align:center;">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <div class="card-title" style="justify-content:center;"><span class="icon"><i class="ti ti-device-gamepad-2"></i></span> Movement Controls</div>
+    <div class="joystick-wrap">
+      <div class="joy-row">
+        <button type="button" class="joy-btn" onclick="logMove('FORWARD')">▲</button>
+      </div>
+      <div class="joy-row">
+        <button type="button" class="joy-btn" onclick="logMove('LEFT')">◀</button>
+        <button type="button" class="joy-btn center" onclick="logMove('STOP')">STOP</button>
+        <button type="button" class="joy-btn" onclick="logMove('RIGHT')">▶</button>
+      </div>
+      <div class="joy-row">
+        <button type="button" class="joy-btn" onclick="logMove('REVERSE')">▼</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDS -->
+  <section class="card card-commands">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <div class="card-title"><span class="icon"><i class="ti ti-terminal"></i></span> Commands</div>
+    <div class="cmd-grid">
+      <button type="button" class="cmd-btn cmd-scan"     onclick="runCmd('Scan initiated...')">
+        <span class="cmd-icon"><i class="ti ti-scan"></i></span>SCAN
+      </button>
+      <button type="button" class="cmd-btn cmd-restart"  onclick="runCmd('Rebooting system...')">
+        <span class="cmd-icon"><i class="ti ti-refresh"></i></span>REBOOT
+      </button>
+      <button type="button" class="cmd-btn cmd-shutdown" onclick="runCmd('Shutdown sequence started.')">
+        <span class="cmd-icon"><i class="ti ti-power"></i></span>HALT
+      </button>
+    </div>
+  </section>
+
+  <section class="card card-logs">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <div class="card-title"><span class="icon"><i class="ti ti-logs"></i></span> Activity Logs</div>
+    <div class="log-terminal" id="logs">
+      <div class="log-entry"><span class="log-time">00:00:01</span><span class="log-msg info">System initialized...</span></div>
+      <div class="log-entry"><span class="log-time">00:00:03</span><span class="log-msg">AI sensors calibrated.</span></div>
+      <div class="log-entry"><span class="log-time">00:00:05</span><span class="log-msg">Navigation system online.</span></div>
+      <div class="log-entry"><span class="log-time">00:00:08</span><span class="log-msg">Motor diagnostics stable.</span></div>
+    </div>
+  </section>
+
+  <section class="card card-chart">
+    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+    <div class="card-corner bl"></div><div class="card-corner br"></div>
+    <div class="card-title"><span class="icon"><i class="ti ti-chart-bar"></i></span> Weekly Performance</div>
+    <div class="chart-area" id="chart">
+    </div>
+  </section>
+
+</main>
+
+
+</main>
+<footer>Robotics Monitoring Interface &nbsp;•&nbsp; AI Powered System &nbsp;•&nbsp; v2.1.0</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

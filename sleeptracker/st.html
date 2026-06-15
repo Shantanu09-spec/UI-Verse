@@ -1,12 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes' 'sha256-0TNk83IyMkuEA5zhBK/k9n/s3b1Gs7H2MNO/qaC992k=' 'sha256-5xIDIkTIcKuaS00qhdKbjnluTexFCeWmnGQQJSzyg88=' 'sha256-Da/Lw/a446kX+lLrLBTLEiIiDfSW8PhQ52LF1rPLbbk=' 'sha256-Q1+Np5oY4mWhCoAK34JX8t+H6LJnUO1x9lONgDZcFVA=' 'sha256-U3MazMEJTiMsg4LapgdcItRUgVsNA5IPIzNPZlvg8TA=' 'sha256-iSmMul3Q8rM+0XUBhsRQj1ZNQNkySqLQccKauwcNuas=' 'sha256-zKBPoloeOI+p/S0tsVitgIgqOsjyrR58P7btyb7IFWA='; style-src-attr 'unsafe-hashes' 'sha256-0TNk83IyMkuEA5zhBK/k9n/s3b1Gs7H2MNO/qaC992k=' 'sha256-5xIDIkTIcKuaS00qhdKbjnluTexFCeWmnGQQJSzyg88=' 'sha256-Da/Lw/a446kX+lLrLBTLEiIiDfSW8PhQ52LF1rPLbbk=' 'sha256-Q1+Np5oY4mWhCoAK34JX8t+H6LJnUO1x9lONgDZcFVA=' 'sha256-U3MazMEJTiMsg4LapgdcItRUgVsNA5IPIzNPZlvg8TA=' 'sha256-iSmMul3Q8rM+0XUBhsRQj1ZNQNkySqLQccKauwcNuas=' 'sha256-zKBPoloeOI+p/S0tsVitgIgqOsjyrR58P7btyb7IFWA='">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sleep Tracking Dashboard</title>
   <link rel="stylesheet" href="st.css">
 </head>
 <body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="hero">
+
+  <nav class="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+    <div class="logo">
+      🌙 SleepSync
+    </div>
+
+    <div class="nav-actions">
+      <button id="themeBtn">✨ Theme</button>
+      <button id="sleepMusicBtn">🎵 Sleep Sound</button>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+
+    <div class="hero-left">
+
+      <span class="hero-badge">
+        😴 Smart Sleep Tracker
+      </span>
+
+      <h1>
+        Sleep Better.
+        <br>
+        Wake Stronger.
+      </h1>
+
+      <p>
+        Track your sleep quality, monitor recovery,
+        and build healthier sleeping habits with AI insights.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="primary-btn">
+          View Analytics
+        </button>
+
+        <button class="secondary-btn">
+          Set Goal
+        </button>
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+
+      <div class="hero-card">
+
+        <div class="moon"></div>
+
+        <h2>Today's Sleep Score</h2>
+
+        <div class="hero-score">
+          <span id="scoreCounter">0</span>
+        </div>
+
+        <p>Excellent Recovery</p>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="sky-container">
+
+  <!-- Animated Stars -->
+  <div class="stars"></div>
+
+  <!-- Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <!-- Moon Phase Widget -->
+  <div class="moon-phase-card">
+
+    <h2>🌙 Moon Phase</h2>
+
+    <div class="moon-widget">
+
+      <div class="moon-phase" id="moonPhase"></div>
+
+    </div>
+
+    <h3 id="phaseName">
+      Waxing Crescent
+    </h3>
+
+    <p>
+      Sleep quality often improves during calm moonlit nights.
+    </p>
+
+    <button id="changePhase">
+      Next Phase
+    </button>
+
+  </div>
+
+</div>
+
+</header>
 
   <div class="dashboard">
 
@@ -29,6 +468,26 @@
 
     </div>
 
+    <div class="card quality-card">
+  <h3>Sleep Quality</h3>
+
+  <div class="progress-ring">
+    <span>85%</span>
+  </div>
+
+  <p>Excellent Recovery</p>
+</div>
+
+<div class="card stats-card">
+  <h2>Sleep Insights</h2>
+
+  <ul>
+    <li>Average Sleep: 7h 32m</li>
+    <li>Deep Sleep: 2h 10m</li>
+    <li>REM Sleep: 1h 45m</li>
+    <li>Sleep Consistency: 92%</li>
+  </ul>
+</div>
     <div class="bottom-section">
 
       <div class="analytics-card">
@@ -77,7 +536,7 @@
           Set a reminder to maintain a healthy sleep routine.
         </p>
 
-        <input type="time" id="bedtimeInput">
+        <input type="time" id="bedtimeInput" data-a11y-remediation="label-needed">
 
         <button id="setReminderBtn">
           Set Reminder
@@ -90,7 +549,162 @@
     </div>
 
   </div>
+  <!-- Extra Dashboard Section -->
+<div class="extra-section">
+
+  <!-- Sleep Streak -->
+  <div class="card streak-card">
+    <h2>🔥 Sleep Streak</h2>
+    <div class="streak-number" id="streakCount">14</div>
+    <p>Days Consistent Sleep</p>
+  </div>
+
+  <!-- Goal Progress -->
+  <div class="card goal-card">
+    <h2>🎯 Sleep Goal</h2>
+
+    <div class="goal-progress">
+      <div class="goal-fill" id="goalFill"></div>
+    </div>
+
+    <h3 id="goalText">78%</h3>
+  </div>
+
+  <!-- Mood -->
+  <div class="card mood-card">
+    <h2>😊 Morning Mood</h2>
+
+    <div class="mood-buttons">
+      <button class="mood">😴</button>
+      <button class="mood">🙂</button>
+      <button class="mood">😁</button>
+    </div>
+
+    <p id="moodResult">Select your mood</p>
+  </div>
+
+  <!-- AI Insights -->
+  <div class="card ai-card">
+    <h2>🤖 AI Recommendation</h2>
+
+    <p id="aiTip">
+      Sleep 15 mins earlier tonight for better recovery.
+    </p>
+
+    <button id="newTip">
+      Generate Insight
+    </button>
+  </div>
+
+  <!-- Environment -->
+  <div class="card env-card">
+    <h2>🌙 Room Conditions</h2>
+
+    <div class="env-data">
+      <span>🌡️ 24°C</span>
+      <span>💧 52%</span>
+      <span>🔇 Quiet</span>
+    </div>
+  </div>
+
+  <!-- Water Tracker -->
+  <div class="card water-card">
+    <h2>💦 Water Intake</h2>
+
+    <h1 id="waterCount">0</h1>
+
+    <button id="addWater">
+      + Glass
+    </button>
+  </div>
+
+  <!-- Live Clock -->
+  <div class="card clock-card">
+    <h2>⏰ Current Time</h2>
+
+    <h1 id="clock"></h1>
+  </div>
+
+</div>
+<div class="card debt-card">
+  <h2>📉 Sleep Debt</h2>
+  <h1>1h 20m</h1>
+  <p>You need extra rest this week</p>
+</div>
+<div class="card debt-card">
+  <h2>📉 Sleep Debt</h2>
+  <h1>1h 20m</h1>
+  <p>You need extra rest this week</p>
+</div>
+<div class="card stress-card">
+  <h2>🧘 Recovery Score</h2>
+  <h1>84%</h1>
+  <p>Body recovered well overnight</p>
+</div>
+<div class="card heart-card">
+  <h2>❤️ Sleeping Heart Rate</h2>
+  <h1>58 BPM</h1>
+</div>
+<div class="card breathing-card">
+  <h2>🌬️ Breathing</h2>
+  <h1>Normal</h1>
+  <p>No interruptions detected</p>
+</div>
+<div class="card calories-card">
+  <h2>🔥 Recovery Energy</h2>
+  <h1>720 kcal</h1>
+</div>
+<div class="card timeline-card">
+  <h2>Sleep Stages</h2>
+
+  <div class="timeline">
+    <div class="deep"></div>
+    <div class="light"></div>
+    <div class="rem"></div>
+    <div class="awake"></div>
+  </div>
+</div>
+<div class="card screen-card">
+  <h2>📱 Screen Time</h2>
+  <h1>1h 12m</h1>
+  <p>Reduce usage before bedtime</p>
+</div>
+<div class="card energy-card">
+  <h2>⚡ Energy Level</h2>
+  <h1>88%</h1>
+</div>
+<div class="card sounds-card">
+  <h2>🎵 Sleep Sounds</h2>
+
+  <button>Rain</button>
+  <button>Ocean</button>
+  <button>Forest</button>
+</div>
+<div class="card tip-card">
+  <h2>💡 Daily Tip</h2>
+
+  <p id="sleepTip">
+    Avoid caffeine 6 hours before bed.
+  </p>
+</div>
+<div class="card weekly-card">
+  <h2>🎯 Weekly Goal</h2>
+
+  <h1>5 / 7</h1>
+
+  <p>Nights achieved target sleep</p>
+</div>
+<div class="card month-card">
+  <h2>📅 Monthly Overview</h2>
+
+  <ul>
+    <li>Average Sleep: 7h 40m</li>
+    <li>Best Night: 9h 10m</li>
+    <li>Worst Night: 5h 50m</li>
+  </ul>
+</div>
 
   <script src="st.js"></script>
+      <script src="../dist/shared.js"></script>
 </body>
 </html>

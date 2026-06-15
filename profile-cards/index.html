@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes'; script-src-attr 'unsafe-hashes'; style-src 'self' https: 'unsafe-hashes'; style-src-attr 'unsafe-hashes'">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Cards - UIverse</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+
+  <h1 class="page-title">Profile Card Components</h1>
+  <p class="page-subtitle">Modern and professional profile card UI components</p>
+
+  <div class="container">
+
+    <!-- Card 1: Social Media Profile Card -->
+    <div class="profile-card social-card">
+      <div class="cover-photo"></div>
+      <div class="avatar-wrap">
+        <div class="avatar">PC</div>
+      </div>
+      <div class="card-body">
+        <h3>Priyanshi Choudhary</h3>
+        <p class="role">Frontend Developer</p>
+        <div class="stats-row">
+          <div class="stat">
+            <span class="num">128</span>
+            <span class="lbl">Posts</span>
+          </div>
+          <div class="stat">
+            <span class="num">4.2K</span>
+            <span class="lbl">Followers</span>
+          </div>
+          <div class="stat">
+            <span class="num">312</span>
+            <span class="lbl">Following</span>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary">Follow</button>
+          <button class="btn outline">Message</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Card 6: Freelancer Profile Card -->
+<div class="profile-card freelancer-card">
+  <div class="freelancer-avatar">PC</div>
+  <h3>Priyanshi Choudhary</h3>
+  <p class="role">Freelance Frontend Developer</p>
+
+  <div class="rating">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+    <span>4.8/5</span>
+  </div>
+
+  <div class="freelancer-stats">
+    <div>
+      <strong>85+</strong>
+      <span>Projects</span>
+    </div>
+    <div>
+      <strong>60+</strong>
+      <span>Clients</span>
+    </div>
+  </div>
+
+  <button class="btn primary full">Hire Me</button>
+</div>
+
+<!-- Card 7: Achievement Profile Card -->
+<div class="profile-card achievement-card">
+  <div class="achievement-avatar">
+    <i class="fas fa-trophy"></i>
+  </div>
+
+  <h3>Priyanshi Choudhary</h3>
+  <p class="role">Open Source Contributor</p>
+
+  <div class="achievement-list">
+    <div class="achievement-item">
+      <i class="fas fa-medal"></i>
+      <span>Top Contributor 2025</span>
+    </div>
+
+    <div class="achievement-item">
+      <i class="fas fa-award"></i>
+      <span>100+ Commits</span>
+    </div>
+
+    <div class="achievement-item">
+      <i class="fas fa-certificate"></i>
+      <span>Frontend Certified</span>
+    </div>
+  </div>
+
+  <button class="btn primary full">View Achievements</button>
+</div>
+
+<!-- Card 8: Glassmorphism Profile Card -->
+<div class="profile-card glass-card">
+  <div class="glass-avatar">PC</div>
+
+  <h3>Priyanshi Choudhary</h3>
+  <p class="role">UI Designer & Developer</p>
+
+  <div class="glass-social">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-dribbble"></i></a>
+  </div>
+
+  <button class="btn white">Portfolio</button>
+</div>
+
+<!-- Card 9: Resume Snapshot Card -->
+<div class="profile-card resume-card">
+  <div class="resume-header">
+    <div class="resume-avatar">PC</div>
+    <div>
+      <h3>Priyanshi Choudhary</h3>
+      <p>Frontend Developer</p>
+    </div>
+  </div>
+
+  <div class="resume-section">
+    <h4>Education</h4>
+    <p>B.Tech ECE - GWECA Ajmer</p>
+  </div>
+
+  <div class="resume-section">
+    <h4>Experience</h4>
+    <p>Open Source Contributor</p>
+  </div>
+
+  <div class="resume-section">
+    <h4>Skills</h4>
+    <div class="skills">
+      <span class="skill">React</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">CSS</span>
+      <span class="skill">Git</span>
+    </div>
+  </div>
+
+  <button class="btn primary full">Download CV</button>
+</div>
+
+<!-- Card 10: CEO Profile Card -->
+<div class="profile-card ceo-card">
+  <div class="ceo-banner"></div>
+
+  <div class="ceo-avatar">
+    <i class="fas fa-user-tie"></i>
+  </div>
+
+  <h3>Priyanshi Choudhary</h3>
+  <p class="role">Founder & CEO</p>
+
+  <blockquote>
+    "Innovation starts with curiosity and consistency."
+  </blockquote>
+
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fas fa-globe"></i></a>
+  </div>
+
+  <button class="btn primary full">View Company</button>
+</div>
+    <!-- Card 2: Developer Profile Card -->
+    <div class="profile-card dev-card">
+      <div class="dev-header">
+        <div class="dev-avatar">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="dev-info">
+          <h3>Priyanshi Choudhary</h3>
+          <p class="role"><i class="fas fa-map-marker-alt"></i> Ajmer, India</p>
+        </div>
+      </div>
+      <p class="bio">B.Tech ECE student passionate about VLSI design and frontend development. Open source contributor.</p>
+      <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">VLSI</span>
+        <span class="skill">RTL</span>
+      </div>
+      <div class="dev-stats">
+        <div class="dev-stat">
+          <i class="fas fa-code-branch"></i>
+          <span>42 Repos</span>
+        </div>
+        <div class="dev-stat">
+          <i class="fas fa-star"></i>
+          <span>128 Stars</span>
+        </div>
+        <div class="dev-stat">
+          <i class="fas fa-users"></i>
+          <span>56 Followers</span>
+        </div>
+      </div>
+      <button class="btn primary full">View GitHub</button>
+    </div>
+
+    <!-- Card 3: Team Member Card -->
+    <div class="profile-card team-card">
+      <div class="team-avatar">P</div>
+      <h3>Priyanshi Choudhary</h3>
+      <p class="role">UI/UX Designer</p>
+      <p class="dept">Design Team</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <button class="btn primary full">View Profile</button>
+    </div>
+
+    <!-- Card 4: Animated Hover Profile Card -->
+    <div class="profile-card hover-card">
+      <div class="hover-front">
+        <div class="hover-avatar">PC</div>
+        <h3>Priyanshi Choudhary</h3>
+        <p class="role">Open Source Contributor</p>
+        <p class="hover-hint"><i class="fas fa-hand-pointer"></i> Hover to see more</p>
+      </div>
+      <div class="hover-back">
+        <h3>About Me</h3>
+        <p>B.Tech ECE student from GWECA Ajmer. Passionate about frontend development and VLSI design.</p>
+        <div class="social-icons light">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <button class="btn white">Connect</button>
+      </div>
+    </div>
+
+    <div class="profile-card influencer-card">
+  <div class="verified-badge">
+    <i class="fas fa-check-circle"></i>
+  </div>
+
+  <div class="avatar">PC</div>
+
+  <h3>Priyanshi Choudhary</h3>
+  <p class="role">Tech Content Creator</p>
+
+  <div class="stats-row">
+    <div>
+      <strong>250K</strong>
+      <span>Followers</span>
+    </div>
+
+    <div>
+      <strong>1.2M</strong>
+      <span>Likes</span>
+    </div>
+  </div>
+
+  <button class="btn primary full">Subscribe</button>
+</div>
+
+<div class="profile-card mentor-card">
+  <div class="avatar">PC</div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p class="role">Frontend Mentor</p>
+
+  <div class="mentor-info">
+    <span>500+ Students</span>
+    <span>20 Workshops</span>
+  </div>
+
+  <button class="btn primary full">
+    Book Session
+  </button>
+</div>
+
+<div class="profile-card pm-card">
+  <div class="avatar">PM</div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p class="role">Product Manager</p>
+
+  <ul>
+    <li>15 Products Launched</li>
+    <li>8 Years Experience</li>
+    <li>Agile Expert</li>
+  </ul>
+
+  <button class="btn primary full">
+    Connect
+  </button>
+</div>
+
+
+<div class="profile-card gamer-card">
+  <div class="rank-badge">Diamond</div>
+
+  <div class="avatar">
+    <i class="fas fa-gamepad"></i>
+  </div>
+
+  <h3>PixelQueen</h3>
+
+  <p>Competitive Gamer</p>
+
+  <div class="stats-row">
+    <div>
+      <strong>87%</strong>
+      <span>Win Rate</span>
+    </div>
+
+    <div>
+      <strong>1240</strong>
+      <span>Matches</span>
+    </div>
+  </div>
+</div>
+
+<div class="profile-card founder-card">
+  <div class="avatar">
+    <i class="fas fa-rocket"></i>
+  </div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p class="role">Startup Founder</p>
+
+  <div class="startup-stats">
+    <div>3 Startups</div>
+    <div>15 Team Members</div>
+    <div>₹2Cr Raised</div>
+  </div>
+
+  <button class="btn primary full">
+    Learn More
+  </button>
+</div>
+
+<div class="profile-card dark-glass-card">
+  <div class="avatar">PC</div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p>Creative Developer</p>
+
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+
+  <button class="btn white">
+    Portfolio
+  </button>
+</div>
+
+<div class="profile-card recruiter-card">
+  <div class="avatar">PC</div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p>Frontend Developer</p>
+
+  <div class="availability">
+    Available for Hiring
+  </div>
+
+  <div class="salary">
+    Expected CTC: ₹8 LPA
+  </div>
+
+  <button class="btn primary full">
+    Download Resume
+  </button>
+</div>
+
+<div class="profile-card timeline-card">
+  <h3>Career Journey</h3>
+
+  <div class="timeline-item">
+    <strong>2023</strong>
+    <p>Started B.Tech</p>
+  </div>
+
+  <div class="timeline-item">
+    <strong>2024</strong>
+    <p>Frontend Projects</p>
+  </div>
+
+  <div class="timeline-item">
+    <strong>2025</strong>
+    <p>Open Source Contributor</p>
+  </div>
+</div>
+
+<div class="profile-card award-card">
+  <div class="award-icon">
+    <i class="fas fa-award"></i>
+  </div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p>Best Student Developer</p>
+
+  <div class="award-year">
+    2025 Winner
+  </div>
+
+  <button class="btn primary full">
+    View Award
+  </button>
+</div>
+
+<div class="profile-card premium-card">
+  <div class="premium-glow"></div>
+
+  <div class="avatar">PC</div>
+
+  <h3>Priyanshi Choudhary</h3>
+
+  <p>Senior UI Engineer</p>
+
+  <div class="premium-tags">
+    <span>React</span>
+    <span>Next.js</span>
+    <span>TypeScript</span>
+  </div>
+
+  <button class="btn primary full">
+    Contact
+  </button>
+</div>
+
+    <!-- Card 5: Minimalist Profile Card -->
+    <div class="profile-card minimal-card">
+      <div class="minimal-top">
+        <div class="minimal-avatar">PC</div>
+        <div class="online-badge"></div>
+      </div>
+      <h3>Priyanshi Choudhary</h3>
+      <p class="role">ECE Student · VLSI Enthusiast</p>
+      <div class="divider"></div>
+      <div class="minimal-info">
+        <p><i class="fas fa-university"></i> GWECA Ajmer</p>
+        <p><i class="fas fa-envelope"></i> priyanshich6199@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Ajmer, Rajasthan</p>
+      </div>
+      <button class="btn primary full">Get In Touch</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../dist/shared.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes' 'sha256-WTWI7yWmQYl+2d0wz55WYL0Gu/1qwpcXPhogMz3tvl8='; script-src-attr 'unsafe-hashes' 'sha256-WTWI7yWmQYl+2d0wz55WYL0Gu/1qwpcXPhogMz3tvl8='; style-src 'self' https: 'unsafe-hashes' 'sha256-1KmfX0MLOtdHhRsALk6HRRZTk3rCN5zT3aZJY7ziSwk=' 'sha256-4m5DrzWq5fpYtMLXgW4IKPyNWL5GuOJSQa2MwaAcxDw=' 'sha256-6Nl2A8HR6GF2FU0uDdkFGnoXwZslzlGdiQJpQuxL2N4=' 'sha256-BSOVbChNPPTZy1HMSrNLunHHSVX1qrXKjcfFHysco58=' 'sha256-JCJQeyM0iEQ0xyAyEVb8sdxs6RQnDDC4BuEvmZqEfik=' 'sha256-RHBAFAfyD2F7bc5wt3ZbVqVC2cpVzfbC0/eCeArVBss=' 'sha256-WO7G0bikCcwoZ6jQJSJiY9wLeVjuafFOqRFVY0sV4ik=' 'sha256-Xe7yU5HUsZLA+Tv6EuS8uEH2CQNr+oFQhFJa3507gnA=' 'sha256-Ycp2S8+GZIfw8tA9pD2eRjkLKWou6egl+pHqktS/lMk=' 'sha256-jf8EVHxEssD2oR8g9pOH6PyjJwURDLyvtNzdsLEXprY=' 'sha256-tpWMbUlP5Uw0VavQx+88OMYf+mw5b4WiOzPF2oUguaY='; style-src-attr 'unsafe-hashes' 'sha256-1KmfX0MLOtdHhRsALk6HRRZTk3rCN5zT3aZJY7ziSwk=' 'sha256-4m5DrzWq5fpYtMLXgW4IKPyNWL5GuOJSQa2MwaAcxDw=' 'sha256-6Nl2A8HR6GF2FU0uDdkFGnoXwZslzlGdiQJpQuxL2N4=' 'sha256-BSOVbChNPPTZy1HMSrNLunHHSVX1qrXKjcfFHysco58=' 'sha256-JCJQeyM0iEQ0xyAyEVb8sdxs6RQnDDC4BuEvmZqEfik=' 'sha256-RHBAFAfyD2F7bc5wt3ZbVqVC2cpVzfbC0/eCeArVBss=' 'sha256-WO7G0bikCcwoZ6jQJSJiY9wLeVjuafFOqRFVY0sV4ik=' 'sha256-Xe7yU5HUsZLA+Tv6EuS8uEH2CQNr+oFQhFJa3507gnA=' 'sha256-Ycp2S8+GZIfw8tA9pD2eRjkLKWou6egl+pHqktS/lMk=' 'sha256-jf8EVHxEssD2oR8g9pOH6PyjJwURDLyvtNzdsLEXprY=' 'sha256-tpWMbUlP5Uw0VavQx+88OMYf+mw5b4WiOzPF2oUguaY='">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Bench Result Dashboard</title>
+  </head>
+<body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+
+      <div class="header-left">
+        <h1>Bench Results Dashboard</h1>
+        <p>Performance overview, analytics & candidate insights</p>
+      </div>
+
+      <div class="search-box">
+        <span>🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search candidate..."
+        / data-a11y-remediation="label-needed">
+      </div>
+
+    </header>
+
+    <!-- STATS -->
+    <section class="stats">
+
+      <div class="card primary">
+        <h3>Total Candidates</h3>
+        <p id="total">0</p>
+      </div>
+
+      <div class="card success">
+        <h3>Passed</h3>
+        <p id="passed">0</p>
+      </div>
+
+      <div class="card danger">
+        <h3>Failed</h3>
+        <p id="failed">0</p>
+      </div>
+
+      <div class="card warning">
+        <h3>Average Score</h3>
+        <p id="average">0%</p>
+      </div>
+
+    </section>
+
+    <!-- TABLE -->
+    <section class="table-wrapper">
+
+      <div class="table-top">
+        <div>
+          <h2>Candidate Results</h2>
+          <p>Live result tracking table</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="resultTable"></tbody>
+
+        </table>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script>
+    const results = [
+      { name: "Aman Verma", score: 92 },
+      { name: "Priya Singh", score: 76 },
+      { name: "Rahul Das", score: 45 },
+      { name: "Sneha Roy", score: 88 },
+      { name: "Rohit Kumar", score: 39 },
+      { name: "Anjali Sharma", score: 81 },
+      { name: "Vikash Gupta", score: 57 },
+      { name: "Neha Kapoor", score: 63 },
+      { name: "Karan Mehta", score: 28 },
+      { name: "Pooja Jain", score: 71 }
+    ];
+
+    const table = document.getElementById("resultTable");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderTable(data) {
+      table.innerHTML = "";
+
+      data.forEach((candidate, index) => {
+        const status = candidate.score >= 50 ? "Passed" : "Failed";
+
+        table.innerHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${candidate.name}</td>
+            <td>
+  <div class="progress-wrap">
+    <div
+      class="progress-bar"
+      style="width:${candidate.score}%"
+    ></div>
+    <span class="score-text">${candidate.score}%</span>
+  </div>
+</td>
+              <span class="badge ${status === "Passed" ? "pass" : "fail"}">
+                ${status}
+              </span>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function updateStats(data) {
+      const total = data.length;
+      const passed = data.filter(c => c.score >= 50).length;
+      const failed = total - passed;
+
+      const average = (
+        data.reduce((sum, c) => sum + c.score, 0) / total
+      ).toFixed(1);
+
+      document.getElementById("total").textContent = total;
+      document.getElementById("passed").textContent = passed;
+      document.getElementById("failed").textContent = failed;
+      document.getElementById("average").textContent = average + "%";
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      const value = e.target.value.toLowerCase();
+
+      const filtered = results.filter(candidate =>
+        candidate.name.toLowerCase().includes(value)
+      );
+
+      renderTable(filtered);
+      updateStats(filtered);
+    });
+
+    renderTable(results);
+    updateStats(results);
+  </script>
+
+        <script src="../dist/shared.js"></script>
+</body>
+</html>

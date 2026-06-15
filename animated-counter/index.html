@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes' 'sha256-GR3JND2X2cuGMYUHGIsU6nWB2gmDSEu9sq/jKBU9I3w=' 'sha256-odLGWB5ZSerNP87059vbLjRRsHkVRozbknps3R81Dd0=' 'sha256-wC/CDtDCb9DsdbSzuuIbuLGptYlQHwoAqkfspnfv4ls='; script-src-attr 'unsafe-hashes' 'sha256-GR3JND2X2cuGMYUHGIsU6nWB2gmDSEu9sq/jKBU9I3w=' 'sha256-odLGWB5ZSerNP87059vbLjRRsHkVRozbknps3R81Dd0=' 'sha256-wC/CDtDCb9DsdbSzuuIbuLGptYlQHwoAqkfspnfv4ls='; style-src 'self' https: 'unsafe-hashes' 'sha256-/DXnx5oTgpBzSDKsAMEUIKiuezA/Yn1HBkF/UTHU4o4=' 'sha256-12AM9uN+dGV8uWzn0Y/zI98D1DUKcIX+HmK7ta6aSkU=' 'sha256-7xd1DFVcBVLfn/COLy+ZpYQnZ0/FHihZ2VeYDmKtN4I=' 'sha256-fdGbqXTj5ytMABgkGd/6pK8zZ7zlauUOgwNhY245iAc='; style-src-attr 'unsafe-hashes' 'sha256-/DXnx5oTgpBzSDKsAMEUIKiuezA/Yn1HBkF/UTHU4o4=' 'sha256-12AM9uN+dGV8uWzn0Y/zI98D1DUKcIX+HmK7ta6aSkU=' 'sha256-7xd1DFVcBVLfn/COLy+ZpYQnZ0/FHihZ2VeYDmKtN4I=' 'sha256-fdGbqXTj5ytMABgkGd/6pK8zZ7zlauUOgwNhY245iAc='">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Counter - UIverse</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+<!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="navbar-brand">
+    <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7V17L12 22L22 17V7L12 2z" stroke="#eb6835"></path>
+    </svg>
+    <span class="brand-text">Uiverse</span>
+  </div>
+  <div class="navbar-divider"></div>
+  <div class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search components..." aria-label="Search components">
+  </div>
+  <div class="nav-right">
+    <a href="../documentation.html" class="nav-btn docs-btn">Docs</a>
+    <a href="../contribute.html" class="nav-btn add-btn">Add Component</a>
+    <button id="darkModeToggle" class="theme-toggle" title="Toggle Theme" onclick="toggleDarkMode()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+  <script>
+    (function() {
+      // Search input enter key redirect
+      const navSearch = document.getElementById('searchInput');
+      if (navSearch) {
+        navSearch.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            const q = encodeURIComponent(this.value.trim());
+            window.location.href = '../components/Discovery/component-discovery.html?q=' + q;
+          }
+        });
+      }
+      
+      // Fallback toggleDarkMode function if not defined globally by the page script
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (toggleBtn) {
+        if (typeof window.toggleDarkMode !== 'function') {
+          window.toggleDarkMode = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+              icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+          };
+        }
+        
+        // Match initial theme icon class
+        const isDark = localStorage.getItem('theme') === 'dark' || document.body.classList.contains('dark-mode');
+        const icon = toggleBtn.querySelector('i');
+        if (icon && isDark) {
+          icon.className = 'fa-solid fa-sun';
+        }
+      }
+    })();
+  </script>
+</header>
+
+
+
+   <header class="counter-header">
+
+  <div class="logo-area">
+      <div class="logo-box">
+          <i class="fa-solid fa-chart-simple"></i>
+      </div>
+
+      <div>
+          <h2>CounterVerse</h2>
+          <span>Animated Counter Collection</span>
+      </div>
+  </div>
+
+  <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        placeholder="Search components..."
+      >
+  </div>
+
+  <div class="header-actions">
+
+      <button class="header-btn">
+          <i class="fa-solid fa-heart"></i>
+      </button>
+
+      <button class="header-btn">
+          <i class="fa-solid fa-code"></i>
+      </button>
+
+      <button class="header-btn">
+          <i class="fa-solid fa-moon"></i>
+      </button>
+
+  </div>
+
+</header>
+
+  <h1 class="page-title">Animated Counter Components</h1>
+  <p class="page-subtitle">Modern animated counter UI components</p>
+  <div class="container">
+
+    <!-- Counter 1: Count Up -->
+    <div class="counter-card">
+      <h3>Count Up</h3>
+      <p>Number count up animation</p>
+      <div class="preview">
+        <div class="countup-wrap">
+          <span class="countup" data-target="1250">0</span>
+          <span class="countup-label">Users</span>
+        </div>
+        <div class="countup-wrap">
+          <span class="countup" data-target="340">0</span>
+          <span class="countup-label">Projects</span>
+        </div>
+        <div class="countup-wrap">
+          <span class="countup" data-target="99">0</span>
+          <span class="countup-label">Reviews</span>
+        </div>
+      </div>
+      <button class="replay-btn" onclick="startCountUp()">
+        <i class="fas fa-redo"></i> Replay
+      </button>
+    </div>
+
+    <!-- Counter 2: Stats Counter -->
+    <div class="counter-card">
+      <h3>Stats Counter</h3>
+      <p>Stats counter with icons</p>
+      <div class="preview vertical">
+        <div class="stat-counter">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-info">
+            <span class="countup" data-target="5420">0</span>
+            <span class="stat-label">Total Users</span>
+          </div>
+        </div>
+        <div class="stat-counter">
+          <div class="stat-icon purple"><i class="fas fa-star"></i></div>
+          <div class="stat-info">
+            <span class="countup" data-target="4800">0</span>
+            <span class="stat-label">5-Star Reviews</span>
+          </div>
+        </div>
+        <div class="stat-counter">
+          <div class="stat-icon green"><i class="fas fa-download"></i></div>
+          <div class="stat-info">
+            <span class="countup" data-target="12000">0</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counter 3: Circular Counter -->
+    <div class="counter-card">
+      <h3>Circular Counter</h3>
+      <p>Circular progress counter</p>
+      <div class="preview">
+        <div class="circular-counter">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg-circle" cx="50" cy="50" r="40"/>
+            <circle class="progress-circle" id="circle1" cx="50" cy="50" r="40"/>
+          </svg>
+          <div class="circular-text">
+            <span class="countup" data-target="75">0</span>
+            <span>%</span>
+          </div>
+        </div>
+        <div class="circular-counter">
+          <svg viewBox="0 0 100 100">
+            <circle class="bg-circle" cx="50" cy="50" r="40"/>
+            <circle class="progress-circle purple-circle" id="circle2" cx="50" cy="50" r="40"/>
+          </svg>
+          <div class="circular-text">
+            <span class="countup" data-target="90">0</span>
+            <span>%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counter 4: Odometer Counter -->
+    <div class="counter-card">
+      <h3>Odometer Counter</h3>
+      <p>Rolling digit style counter</p>
+      <div class="preview">
+        <div class="odometer" id="odometer">
+          <div class="digit-wrap">
+            <div class="digit" id="d1">0</div>
+          </div>
+          <div class="digit-wrap">
+            <div class="digit" id="d2">0</div>
+          </div>
+          <div class="digit-wrap">
+            <div class="digit" id="d3">0</div>
+          </div>
+          <div class="digit-wrap">
+            <div class="digit" id="d4">0</div>
+          </div>
+          <div class="digit-wrap">
+            <div class="digit" id="d5">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counter 5: Minimal Counter Card -->
+    <div class="counter-card">
+      <h3>Minimal Counter</h3>
+      <p>Clean minimal counter card</p>
+      <div class="preview vertical">
+        <div class="minimal-counter">
+          <button class="minus-btn" onclick="changeCount(-1)">
+            <i class="fas fa-minus"></i>
+          </button>
+          <div class="minimal-count" id="minCount">0</div>
+          <button class="plus-btn" onclick="changeCount(1)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <p class="minimal-hint">Click + or - to change</p>
+      </div>
+    </div>
+    <div class="counter-card">
+
+    <h3>Live Visitors</h3>
+
+    <p>Real-time active visitors</p>
+
+    <div class="live-counter">
+
+        <div class="live-dot"></div>
+
+        <span id="visitorCount">
+            256
+        </span>
+
+    </div>
+
+</div>
+<div class="counter-card">
+
+    <h3>Revenue Counter</h3>
+
+    <p>Animated earnings</p>
+
+    <div class="revenue-counter">
+
+        <span>$</span>
+
+        <span id="revenue">
+            0
+        </span>
+
+    </div>
+
+</div>
+<div class="counter-card">
+
+    <h3>Like Counter</h3>
+
+    <p>Interactive social likes</p>
+
+    <div class="like-counter">
+
+        <button id="likeBtn">
+            ❤️
+        </button>
+
+        <span id="likeCount">
+            0
+        </span>
+
+    </div>
+
+</div>
+<div class="counter-card">
+
+    <h3>Achievements</h3>
+
+    <div class="achievement-grid">
+
+        <div class="achievement-item">
+            🏆 25
+        </div>
+
+        <div class="achievement-item">
+            ⭐ 80
+        </div>
+
+        <div class="achievement-item">
+            🚀 40
+        </div>
+
+    </div>
+
+</div>
+<div class="counter-card">
+
+    <h3>Countdown Timer</h3>
+
+    <p>Launch countdown</p>
+
+    <div class="countdown">
+
+        <span id="countdown">
+            60
+        </span>
+
+    </div>
+
+</div>
+<div class="counter-card">
+
+    <h3>Goal Progress</h3>
+
+    <div class="goal-track">
+
+        <div class="goal-fill"></div>
+
+    </div>
+
+    <span id="goalPercent">
+        0%
+    </span>
+
+</div>
+<div class="counter-card xp-card">
+    <h3>XP Level Counter</h3>
+
+    <div class="xp-level">
+        <span id="xpLevel">1</span>
+        <small>LEVEL</small>
+    </div>
+
+    <div class="xp-bar">
+        <div id="xpFill"></div>
+    </div>
+</div>
+<div class="counter-card stock-card">
+
+    <h3>Stock Market</h3>
+
+    <div class="stock-price">
+        ₹<span id="stockValue">2500</span>
+    </div>
+
+    <div id="stockChange">
+        +0.00%
+    </div>
+
+</div>
+<div class="counter-card social-card">
+
+<h3>Followers Growth</h3>
+
+<div class="social-number">
+    <span id="followers">
+        1000
+    </span>
+</div>
+
+<p>Followers</p>
+
+</div>
+<div class="counter-card fitness-card">
+
+<h3>Fitness Tracker</h3>
+
+<div class="steps">
+    👟
+    <span id="stepsCount">
+        0
+    </span>
+</div>
+
+</div>
+<div class="counter-card sales-card">
+
+<h3>E-Commerce Sales</h3>
+
+<div class="sales-number">
+
+🛒
+<span id="salesCount">
+0
+</span>
+
+</div>
+
+</div>
+<div class="counter-card ai-card">
+
+<h3>AI Usage</h3>
+
+<div class="ai-counter">
+
+🤖
+<span id="aiRequests">
+0
+</span>
+
+</div>
+
+<p>Requests Processed</p>
+
+</div>
+<div class="counter-card performance-card">
+
+<h3>System Performance</h3>
+
+<div class="performance-circle">
+
+<span id="cpuValue">
+65
+</span>%
+
+</div>
+
+</div>
+<div class="counter-card rocket-card">
+
+    <div class="rocket">
+        🚀
+    </div>
+
+    <h3>Launch Progress</h3>
+
+    <div class="launch-counter">
+        <span id="launchCount">0</span>%
+    </div>
+
+</div>
+<div class="counter-card galaxy-card">
+
+<div class="planet"></div>
+
+<h3>Galaxy Energy</h3>
+
+<div id="energyValue">
+0
+</div>
+
+</div>
+<div class="counter-card lightning-card">
+
+<div class="lightning">
+⚡
+</div>
+
+<h3>Power Usage</h3>
+
+<div id="powerCount">
+0
+</div>
+
+</div>
+<div class="counter-card cyber-card">
+
+<div class="cyber-ring">
+
+<div class="cyber-number"
+id="xpNumber">
+
+1
+
+</div>
+
+</div>
+
+<h3>Cyber Level</h3>
+
+</div>
+<div class="counter-card crystal-card">
+
+<div class="crystal">
+💎
+</div>
+
+<h3>Crystal Collection</h3>
+
+<div id="crystalCount">
+0
+</div>
+
+</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

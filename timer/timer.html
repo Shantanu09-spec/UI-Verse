@@ -1,12 +1,644 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../dist/shared.css">
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data: https:; script-src 'self' https: 'unsafe-hashes' 'sha256-DpZ3/Q0W3pMSIQ9u61wXpwEax0dsKURXAXGHaicfVrU=' 'sha256-K2RAZ0XORWyY2mJyS65D2WBv/1NH5XqEJ4tI8o1n3Qo=' 'sha256-LSpNb/d0dj0NQBvRFShQga/Jvj6/BMuqBmkhWqfUEBI=' 'sha256-LUd4M2jW9GY9T3nF6dR6YQH0hvHFsKiDo6XjrCTSgRQ=' 'sha256-Pi74SpYyqknBYa3x3Io2exauHMHvuA2TTyQhUCALhBA=' 'sha256-XeUuo+o88b1A5y9LiEeTm5g1SzDiPcRVsCV4GzxyF8M=' 'sha256-nDNopnatM7vco7hnQP3U7oRWe5eKRpfwiKx11nPH/lU=' 'sha256-xio7VXhEa3hZgL3ZkQ06YPJ2OU5czYu2n/k2MlDb5tQ=' 'sha256-y4PsiKA7LJy1wpIR6/po2vCHtN6wq/Ji7rnJH+92hR8='; script-src-attr 'unsafe-hashes' 'sha256-DpZ3/Q0W3pMSIQ9u61wXpwEax0dsKURXAXGHaicfVrU=' 'sha256-K2RAZ0XORWyY2mJyS65D2WBv/1NH5XqEJ4tI8o1n3Qo=' 'sha256-LSpNb/d0dj0NQBvRFShQga/Jvj6/BMuqBmkhWqfUEBI=' 'sha256-LUd4M2jW9GY9T3nF6dR6YQH0hvHFsKiDo6XjrCTSgRQ=' 'sha256-Pi74SpYyqknBYa3x3Io2exauHMHvuA2TTyQhUCALhBA=' 'sha256-XeUuo+o88b1A5y9LiEeTm5g1SzDiPcRVsCV4GzxyF8M=' 'sha256-nDNopnatM7vco7hnQP3U7oRWe5eKRpfwiKx11nPH/lU=' 'sha256-xio7VXhEa3hZgL3ZkQ06YPJ2OU5czYu2n/k2MlDb5tQ=' 'sha256-y4PsiKA7LJy1wpIR6/po2vCHtN6wq/Ji7rnJH+92hR8='; style-src 'self' https: 'unsafe-hashes' 'sha256-1pmwUKnoHUJSi0UKDcwrqZ6aJ7nAD92vw50zMCh5Yz0=' 'sha256-2gcpFB35SLtmFltnzzrpTL5k8mzWeaK1BZmYvhqbvXo=' 'sha256-3nQXB9BVtstV9Mu4nu0HJ1R97K06lV1NTzzS1YbFtfQ=' 'sha256-5yP4k0BTMnsr2231uvL6gmFkpMju/UlA8ugAmseB6Mk=' 'sha256-CZaDuwMSsspb3e3YDd5z3dU3/oM7DpI4HyRFD7B/dq0=' 'sha256-Juy/dqDy1gy1mQy4F6mUri5UHx+atHEcvCxdvfnDs2w=' 'sha256-SkXmi9K9w88T7cz2Un0jdN1+0q8eZsdBDTT+N5w9miA='; style-src-attr 'unsafe-hashes' 'sha256-1pmwUKnoHUJSi0UKDcwrqZ6aJ7nAD92vw50zMCh5Yz0=' 'sha256-2gcpFB35SLtmFltnzzrpTL5k8mzWeaK1BZmYvhqbvXo=' 'sha256-3nQXB9BVtstV9Mu4nu0HJ1R97K06lV1NTzzS1YbFtfQ=' 'sha256-5yP4k0BTMnsr2231uvL6gmFkpMju/UlA8ugAmseB6Mk=' 'sha256-CZaDuwMSsspb3e3YDd5z3dU3/oM7DpI4HyRFD7B/dq0=' 'sha256-Juy/dqDy1gy1mQy4F6mUri5UHx+atHEcvCxdvfnDs2w=' 'sha256-SkXmi9K9w88T7cz2Un0jdN1+0q8eZsdBDTT+N5w9miA='">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pomodoro Timer</title>
   <link rel="stylesheet" href="timer.css">
 </head>
 <body>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="Main sidebar navigation">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../button.html">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span>Buttons</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dropdown-components.html">
+            <i class="fa-solid fa-caret-down"></i>
+            <span>Dropdowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="../profile-components.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Profiles</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="../navbar.html">
+            <i class="fa-solid fa-bars"></i>
+            <span>Navbar</span>
+          </a>
+        </li>
+        <li>
+          <a href="../cards.html">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../flipcards.html">
+            <i class="fa-solid fa-clone"></i>
+            <span>3D Cards</span>
+          </a>
+        </li>
+        <li>
+          <a href="../inputs.html">
+            <i class="fa-solid fa-keyboard"></i>
+            <span>Inputs</span>
+          </a>
+        </li>
+        <li>
+          <a href="../forms.html">
+            <i class="fa-brands fa-wpforms"></i>
+            <span>Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="../badges.html">
+            <i class="fa-solid fa-award"></i>
+            <span>Badges</span>
+          </a>
+        </li>
+        <li>
+          <a href="../blog.html">
+            <i class="fa-solid fa-blog"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="../article.html">
+            <i class="fa-solid fa-newspaper"></i>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a href="../alerts.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../color.html">
+            <i class="fa-solid fa-palette"></i>
+            <span>Colors</span>
+          </a>
+        </li>
+        <li>
+          <a href="../charts.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Charts</span>
+          </a>
+        </li>
+        <li>
+          <a href="../dashboard.html">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../div.html">
+            <i class="fa-solid fa-square"></i>
+            <span>DIV</span>
+          </a>
+        </li>
+        <li>
+          <a href="../widgets.html">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="../search.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search Bars</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hover.html">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Hover Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../error.html">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Pages</span>
+          </a>
+        </li>
+        <li>
+          <a href="../ecommerce.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>E-commerce</span>
+          </a>
+        </li>
+        <li>
+          <a href="../files.html">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            <span>Drag & Drop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hero.html">
+            <i class="fa-solid fa-star"></i>
+            <span>Hero Sections</span>
+          </a>
+        </li>
+        <li>
+          <a href="../loaders.html">
+            <i class="fa-solid fa-spinner"></i>
+            <span>Loaders</span>
+          </a>
+        </li>
+        <li>
+          <a href="../timeline.html">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="../map.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Maps</span>
+          </a>
+        </li>
+        <li>
+          <a href="../menu.html">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span>Menu</span>
+          </a>
+        </li>
+        <li>
+          <a href="../pricing.html">
+            <i class="fa-solid fa-tags"></i>
+            <span>Pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../subscription.html">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="../auth.html">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Authentication</span>
+          </a>
+        </li>
+        <li>
+          <a href="../recovery.html">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>Password Recovery</span>
+          </a>
+        </li>
+      <li>
+
+        <a href="../section.html">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Section</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../span.html">
+          <i class="fa-solid fa-code"></i>
+          <span>Span</span>
+        </a>
+      </li>
+      <li>
+        <a href="../table.html">
+          <i class="fa-solid fa-table"></i>
+          <span>Table</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../tabs.html">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Tabs</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../terms.html">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Terms</span>
+        </a>
+      </li>
+      <li>
+
+        <a href="../testimonials.html">
+          <i class="fa-solid fa-comments"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        
+        <a href="../toggles.html">
+          <i class="fa-solid fa-toggle-on"></i>
+          <span>Toggle</span>
+        </a>
+      </li>
+      <li>
+        <a href="../radiobutton.html">
+          <i class="fa-solid fa-circle-dot"></i>
+          <span>Radio Buttons</span>
+        </a>
+      </li>
+      <li>
+        <a href="../checkbox.html">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Checkboxes</span>
+        </a>
+      </li>
+      <li>
+        <a href="../notifications-premium.html">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notifications V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../step-indicators.html">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Steppers</span>
+        </a>
+      </li>
+      <li>
+        <a href="../progress-premium.html">
+          <i class="fa-solid fa-bars-progress"></i>
+          <span>Progress V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../ratings-premium.html">
+          <i class="fa-solid fa-star"></i>
+          <span>Ratings V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../filters-premium.html">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Filters V2</span>
+        </a>
+      </li>
+      <li>
+        <a href="../admin-panel.html">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin Panel V2</span>
+        </a>
+      </li>
+<li>
+        <a href="../about.html">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="../documentation.html">
+          <i class="fa-solid fa-book"></i>
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li>
+        <a href="../faq.html">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Faq</span>
+        </a>
+      </li>
+      <li>
+        <a href="../contact.html">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contact Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="header">
+
+  <nav class="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+
+    <div class="logo">
+      🍅 FocusFlow
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+
+    <button class="nav-btn">
+      Start Focus
+    </button>
+
+  </nav>
+
+</header>
+
+<section class="hero">
+
+  <div class="hero-glow glow1"></div>
+  <div class="hero-glow glow2"></div>
+
+  <div class="hero-content">
+
+    <span class="hero-badge">
+      ⚡ Boost Productivity Every Day
+    </span>
+
+    <h1>
+      Focus Deep.
+      <br>
+      Work Smart.
+      <br>
+      <span>Achieve More.</span>
+    </h1>
+
+    <p>
+      Stay productive using the Pomodoro technique.
+      Manage tasks, track focus sessions, and
+      build better work habits.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="hero-primary">
+        🍅 Start Session
+      </button>
+
+      <button class="hero-secondary">
+        📊 View Statistics
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="hero-visual">
+
+    <div class="floating-card card-1">
+      🔥 12 Day Streak
+    </div>
+
+    <div class="floating-card card-2">
+      ⏱ 4 Sessions Today
+    </div>
+
+    <div class="floating-card card-3">
+      🎯 Focus Score 92%
+    </div>
+
+    <div class="hero-circle">
+      🍅
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="dashboard-grid">
+<header class="hero">
+  <div class="hero-content">
+    <span class="badge">🍅 Productivity Suite</span>
+
+    <h1>Focus Better With Pomodoro</h1>
+
+    <p>
+      Stay productive, track sessions,
+      and build deep focus habits.
+    </p>
+  </div>
+
+  <div class="floating-card">
+    🔥 12 Day Streak
+  </div>
+</header>
+
+<div class="stats">
+
+  <div class="stat-card">
+    <h2 id="sessions">0</h2>
+    <p>Sessions</p>
+  </div>
+
+  <div class="stat-card">
+    <h2 id="focusHours">0</h2>
+    <p>Focus Hours</p>
+  </div>
+
+  <div class="stat-card">
+    <h2>12</h2>
+    <p>Streak</p>
+  </div>
+
+</div>
+
+<div class="task-section">
+
+  <h3>Today's Tasks</h3>
+
+  <div class="task-input">
+    <input
+      type="text"
+      id="taskInput"
+      placeholder="Add task..."
+    >
+
+    <button onclick="addTask()">
+      Add
+    </button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+</div>
+
+<div class="quote-card">
+  <p id="quote">
+    Success is the sum of small efforts.
+  </p>
+</div>
+
+<div class="sound-box">
+
+  <h3>Focus Sounds</h3>
+
+  <button onclick="changeTheme('rain')">
+    🌧 Rain
+  </button>
+
+  <button onclick="changeTheme('forest')">
+    🌲 Forest
+  </button>
+
+  <button onclick="changeTheme('night')">
+    🌙 Night
+  </button>
+
+</div>
+
+<div class="dashboard-card focus-summary">
+  <h3>Today's Focus</h3>
+
+  <div class="focus-hours">
+    4h 25m
+  </div>
+
+  <p>You've completed 11 focus sessions today.</p>
+
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+</div>
+
+<div class="dashboard-card streak-card">
+  <h3>Current Streak</h3>
+
+  <div class="streak-number">
+    🔥 12 Days
+  </div>
+
+  <p>
+    Keep focusing every day to maintain your streak.
+  </p>
+</div>
+
+<div class="dashboard-card goal-card">
+
+  <h3>Daily Goal</h3>
+
+  <h2 id="goalValue">8 / 12</h2>
+
+  <p>Sessions Completed</p>
+
+</div>
+
+<div class="dashboard-card chart-card">
+
+  <h3>Weekly Progress</h3>
+
+  <div class="mini-chart">
+
+    <div style="height:40%"></div>
+    <div style="height:70%"></div>
+    <div style="height:60%"></div>
+    <div style="height:90%"></div>
+    <div style="height:100%"></div>
+    <div style="height:75%"></div>
+    <div style="height:85%"></div>
+
+  </div>
+
+</div>
+
+<div class="dashboard-card">
+
+  <h3>Task Progress</h3>
+
+  <div class="task-item">
+    <span>Design UI</span>
+    <span>100%</span>
+  </div>
+
+  <div class="task-item">
+    <span>Study JavaScript</span>
+    <span>70%</span>
+  </div>
+
+  <div class="task-item">
+    <span>Exercise</span>
+    <span>50%</span>
+  </div>
+
+</div>
+
+<div class="dashboard-card tree-card">
+
+  <div class="tree-icon">
+    🌳
+  </div>
+
+  <h3>Focus Tree</h3>
+
+  <p>
+    Complete 3 more sessions to grow your tree.
+  </p>
+
+</div>
+
+<div class="dashboard-card break-card">
+
+  <h3>Break Time</h3>
+
+  <p>
+    Stretch your body for 5 minutes.
+  </p>
+
+  <button class="break-btn">
+    Start Break
+  </button>
+
+</div>
+
+<div class="dashboard-card tip-card">
+
+  <h3>Today's Tip</h3>
+
+  <p id="tipText">
+    Eliminate distractions before starting a focus session.
+  </p>
+
+</div>
+
+<div class="dashboard-card achievement-card">
+
+  <h3>Achievements</h3>
+
+  <div class="badges">
+
+    <span>🥇</span>
+    <span>🔥</span>
+    <span>🎯</span>
+    <span>🚀</span>
+
+  </div>
+
+</div>
+
 
 <div class="container">
   <h1>Pomodoro Timer</h1>
@@ -14,19 +646,78 @@
   <div class="timer-box">
     <span id="timer">25:00</span>
   </div>
-
+  
   <div class="buttons">
-    <button onclick="startTimer()">Start</button>
-    <button onclick="pauseTimer()">Pause</button>
-    <button onclick="resetTimer()">Reset</button>
-  </div>
+  <button class="start-btn" onclick="startTimer()">
+    ▶ Start
+  </button>
 
-  <div class="mode-buttons">
-    <button onclick="setMode(25)">Work</button>
-    <button onclick="setMode(5)">Break</button>
-  </div>
+  <button class="pause-btn" onclick="pauseTimer()">
+    ⏸ Pause
+  </button>
+
+  <button class="reset-btn" onclick="resetTimer()">
+    ↺ Reset
+  </button>
 </div>
 
+<div class="mode-buttons">
+  <button class="work-btn" onclick="setMode(25)">
+    🍅 Work
+  </button>
+
+  <button class="break-btn" onclick="setMode(5)">
+    ☕ Break
+  </button>
+</div>
+
+  
+</div>
+  
+</div>
+
+
+ 
+
+<footer class="footer">
+
+  <div class="footer-grid">
+
+    <div>
+      <h3>🍅 FocusFlow</h3>
+
+      <p>
+        Build stronger focus habits and
+        achieve your goals with Pomodoro.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Statistics</a>
+    </div>
+
+    <div>
+      <h4>Resources</h4>
+
+      <a href="#">Guide</a>
+      <a href="#">FAQ</a>
+      <a href="#">Support</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 FocusFlow • Stay Focused 🍅
+  </div>
+
+</footer>
+
+
 <script src="timer.js"></script>
+      <script src="../dist/shared.js"></script>
 </body>
 </html>
