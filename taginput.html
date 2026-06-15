@@ -2,419 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise High-Fidelity Tag/Chip Input Architecture</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    /* ==========================================================================
-       1. VARIABLES, TOKENS & SYSTEM BASE DECORATORS
-       ========================================================================== */
-    :root {
-      --uiverse-bg-rgb: 5, 8, 22;
-      --uiverse-surface-rgb: 15, 23, 42;
-      --uiverse-card-rgb: 13, 18, 36;
-      --uiverse-primary-rgb: 235, 104, 53;      /* Core Orange Accent */
-      --uiverse-secondary-rgb: 108, 92, 231;   /* Indigo Purple Accent */
-      --uiverse-danger-rgb: 239, 68, 68;       /* System Error Crimson */
-      --uiverse-success-rgb: 16, 185, 129;     /* Core Success Emerald */
-      --uiverse-text-rgb: 248, 250, 252;
-      --uiverse-muted-rgb: 148, 163, 184;
-
-      --uiverse-bg: rgb(var(--uiverse-bg-rgb));
-      --uiverse-surface: rgb(var(--uiverse-surface-rgb));
-      --uiverse-card: rgb(var(--uiverse-card-rgb));
-      --uiverse-primary: rgb(var(--uiverse-primary-rgb));
-      --uiverse-secondary: rgb(var(--uiverse-secondary-rgb));
-      --uiverse-danger: rgb(var(--uiverse-danger-rgb));
-      --uiverse-success: rgb(var(--uiverse-success-rgb));
-      --uiverse-text: rgb(var(--uiverse-text-rgb));
-      --uiverse-muted: rgb(var(--uiverse-muted-rgb));
-
-      --font-display: 'Syne', system-ui, -apple-system, sans-serif;
-      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
-
-      --border-alpha: rgba(255, 255, 255, 0.06);
-      --glass-blur: blur(16px);
-      --radius-xl: 24px;
-      --radius-lg: 16px;
-      --radius-md: 10px;
-      --radius-sm: 6px;
-
-      --shadow-lg: 0 24px 64px -12px rgba(0, 0, 0, 0.6);
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-fast: all 0.15s ease;
+  <title>Tag / Chip Input Demo</title>
+  <link rel="stylesheet" href="taginput.css">
+  <script src="js/loader.js" defer></script>
+  <link rel="stylesheet" href="shared-sidebar.css">
+<script>
+  // Self-contained sidebar toggle - works even before loader.js initializes
+  (function() {
+    function _doToggleSidebar() {
+      var sidebar = document.getElementById('sidebar') || document.querySelector('.sidebar');
+      var backdrop = document.getElementById('sidebarBackdrop') || document.querySelector('.sidebar-backdrop');
+      if (!sidebar) return;
+      if (window.innerWidth <= 900) {
+        var isOpen = document.body.classList.contains('sidebar-open');
+        if (isOpen) {
+          document.body.classList.remove('sidebar-open');
+          sidebar.classList.remove('open');
+          if (backdrop) { backdrop.classList.remove('active', 'visible'); }
+        } else {
+          document.body.classList.add('sidebar-open');
+          sidebar.classList.add('open');
+          if (backdrop) { backdrop.classList.add('active', 'visible'); }
+        }
+      } else {
+        var isHidden = document.body.classList.contains('sidebar-hidden');
+        if (isHidden) {
+          document.body.classList.remove('sidebar-hidden');
+          sessionStorage.setItem('sidebarHidden', '0');
+        } else {
+          document.body.classList.add('sidebar-hidden');
+          sessionStorage.setItem('sidebarHidden', '1');
+        }
+      }
     }
-
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--uiverse-bg);
-      color: var(--uiverse-text);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-
-    /* Ambient Canvas Lighting Vectors */
-    body::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      right: 10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(var(--uiverse-primary-rgb), 0.04) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ==========================================================================
-       2. CANVAS HOUSING SHELL
-       ========================================================================== */
-    .container {
-      background: rgba(var(--uiverse-card-rgb), 0.45);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--border-alpha);
-      padding: 56px 48px;
-      border-radius: var(--radius-xl);
-      width: 100%;
-      max-width: 640px;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      z-index: 1;
-      transition: var(--transition-smooth);
-    }
-
-    .container:hover {
-      border-color: rgba(var(--uiverse-primary-rgb), 0.15);
-      box-shadow: var(--shadow-lg), 0 0 40px rgba(var(--uiverse-primary-rgb), 0.01);
-    }
-
-    .title {
-      font-family: var(--font-display);
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 30%, rgba(var(--uiverse-primary-rgb), 0.8) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      color: var(--uiverse-muted);
-      font-size: 0.95rem;
-      margin-bottom: 36px;
-      line-height: 1.6;
-    }
-
-    .subtitle strong {
-      color: var(--uiverse-primary);
-    }
-
-    /* ==========================================================================
-       3. TAG INTERACTION WRAPPER COMPONENT
-       ========================================================================== */
-    .tag-input-wrapper {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid var(--border-alpha);
-      border-radius: var(--radius-lg);
-      padding: 12px 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      cursor: text;
-      transition: var(--transition-smooth);
-      position: relative;
-      min-height: 60px;
-    }
-
-    .tag-input-wrapper.focused {
-      border-color: var(--uiverse-primary);
-      background: rgba(0, 0, 0, 0.35);
-      box-shadow: 0 0 0 4px rgba(var(--uiverse-primary-rgb), 0.15);
-    }
-
-    .tag-input-wrapper.has-error {
-      border-color: var(--uiverse-danger) !important;
-      box-shadow: 0 0 0 4px rgba(var(--uiverse-danger-rgb), 0.12) !important;
-    }
-
-    .tags-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    /* ==========================================================================
-       4. HIGH FIDELITY CHIP COMPONENT DESIGN
-       ========================================================================== */
-    .chip-node {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(var(--uiverse-primary-rgb), 0.08);
-      color: var(--uiverse-primary);
-      border: 1px solid rgba(var(--uiverse-primary-rgb), 0.2);
-      padding: 6px 14px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-weight: 600;
-      user-select: none;
-      animation: chipPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-      transition: var(--transition-fast);
-      cursor: grab;
-      position: relative;
-    }
-
-    .chip-node:hover {
-      background: rgba(var(--uiverse-primary-rgb), 0.15);
-      border-color: rgba(var(--uiverse-primary-rgb), 0.3);
-      transform: translateY(-1px);
-    }
-
-    /* Accessibility Keyboard Traversal State Rules */
-    .chip-node:focus-visible,
-    .chip-node.keyboard-focused {
-      outline: none;
-      background: var(--uiverse-primary);
-      color: #fff;
-      border-color: transparent;
-      box-shadow: 0 4px 12px rgba(var(--uiverse-primary-rgb), 0.3);
-    }
-
-    .chip-node.is-dragging {
-      opacity: 0.4;
-      cursor: grabbing;
-    }
-
-    .chip-remove-btn {
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      font-size: 11px;
-      color: rgba(var(--uiverse-primary-rgb), 0.6);
-      transition: var(--transition-fast);
-    }
-
-    .chip-node:hover .chip-remove-btn {
-      color: var(--uiverse-primary);
-      background: rgba(var(--uiverse-primary-rgb), 0.1);
-    }
-
-    .chip-node.keyboard-focused .chip-remove-btn {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .chip-remove-btn:hover {
-      background: var(--uiverse-danger) !important;
-      color: #fff !important;
-    }
-
-    @keyframes chipPop {
-      0% { transform: scale(0.75); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* ==========================================================================
-       5. CORE DATA INPUT FIELDS
-       ========================================================================== */
-    .tag-input-field {
-      flex: 1;
-      min-width: 140px;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 4px 0;
-    }
-
-    .tag-input-field::placeholder {
-      color: rgba(255, 255, 255, 0.25);
-    }
-
-    /* ==========================================================================
-       6. CONTEXTUAL META METRICS & ERRORS HUDS
-       ========================================================================== */
-    .meta-metrics-hud {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 12px;
-      min-height: 24px;
-      padding: 0 4px;
-    }
-
-    .error-msg-node {
-      color: var(--uiverse-danger);
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: var(--transition-fast);
-    }
-
-    .error-msg-node.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .count-indicator {
-      font-size: 12px;
-      color: var(--uiverse-muted);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-left: auto;
-    }
-
-    .count-indicator.limit-reached {
-      color: var(--uiverse-primary);
-    }
-
-    /* ==========================================================================
-       7. SUGGESTED AUTOCOMPLETE HUD PANEL
-       ========================================================================== */
-    .autocomplete-panel {
-      position: absolute;
-      top: 105%;
-      left: 0;
-      right: 0;
-      background: rgb(21, 29, 47);
-      border: 1px solid var(--border-alpha);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      z-index: 100;
-      max-height: 200px;
-      overflow-y: auto;
-      opacity: 0;
-      transform: translateY(8px);
-      pointer-events: none;
-      transition: var(--transition-smooth);
-    }
-
-    .autocomplete-panel.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-
-    .suggestion-item {
-      padding: 12px 18px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--uiverse-muted);
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .suggestion-item:hover,
-    .suggestion-item.highlighted {
-      background: rgba(var(--uiverse-primary-rgb), 0.06);
-      color: var(--uiverse-primary);
-    }
-
-    /* ==========================================================================
-       8. CONTROLS FOOTER ACTION BUTTONS
-       ========================================================================== */
-    .action-panel-footer {
-      margin-top: 32px;
-      display: flex;
-      gap: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      padding-top: 24px;
-    }
-
-    .btn {
-      background: var(--uiverse-primary);
-      color: #fff;
-      border: 1px solid transparent;
-      padding: 12px 24px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--uiverse-transition-smooth);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn:hover {
-      background: #ff7640;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(var(--uiverse-primary-rgb), 0.2);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--border-alpha);
-      color: var(--uiverse-muted);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.02);
-      border-color: rgba(255, 255, 255, 0.15);
-      color: #fff;
-    }
-  </style>
+    // Override window.toggleSidebar immediately so onclick works
+    window.toggleSidebar = _doToggleSidebar;
+    // Also restore sidebar state from sessionStorage on load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.innerWidth > 900 && sessionStorage.getItem('sidebarHidden') === '1') {
+        document.body.classList.add('sidebar-hidden');
+      }
+      // Re-bind in case another script overwrites it
+      if (typeof window.toggleSidebar !== 'function') {
+        window.toggleSidebar = _doToggleSidebar;
+      }
+    });
+  })();
+</script>
 </head>
 <body>
-
-  <div class="container">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">UIverse <span
+          style="font-size: 9px; background: linear-gradient(135deg, #eb6835, #7b61ff); color: white; padding: 1px 6px; border-radius: 10px; font-weight: 800; margin-left: 4px; letter-spacing: 0.5px; vertical-align: middle; box-shadow: 0 0 8px rgba(235,104,53,0.3);">V2</span></span>
     
-    <h1 class="title">🏷️ Tag / Chip Input Component</h1>
-    <p class="subtitle">Type a skill or topic, then press <strong>Enter</strong> or <strong>Comma</strong> to build chips. Max 5 allowed.</p>
-
-    <div class="tag-input-wrapper" id="tagApparatusContainer">
-      
-      <div class="tags-container" id="chipsTargetContainer"></div>
-      
-      <input type="text" class="tag-input-field" id="tagInputElement" placeholder="Type tag and press Enter..." autocomplete="off">
-
-      <div class="autocomplete-panel" id="autocompleteSuggestionsPanel"></div>
-
-    </div>
-
-    <div class="meta-metrics-hud">
-      <div class="error-msg-node" id="errorMessageHUD"><i class="fa-solid fa-triangle-exclamation"></i> <span id="errorMsgText"></span></div>
-      <div class="count-indicator" id="tagCounterHUD">0 / 5 Tags</div>
-    </div>
-
-    <input type="hidden" name="serialized_tags_output" id="serializedHiddenField">
-
-    <div class="action-panel-footer">
-      <button class="btn btn-secondary" id="clearAllTagsAction"><i class="fa-solid fa-trash-can"></i> Reset Board</button>
-      <button class="btn" id="submitPayloadAction"><i class="fa-solid fa-cloud-arrow-up"></i> Save Payload</button>
+      <button class="sidebar-toggle-btn" onclick="toggleSidebar()" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     </div>
 
   </div>
