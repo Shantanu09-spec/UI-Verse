@@ -389,9 +389,13 @@
       }, remainingTime);
     }
 
+
+    
     /**
      * Safely tears down element models and unbinds remaining event handlers
      */
+    
+    
     unmount() {
       if (!this.domElement) return;
 
@@ -408,9 +412,13 @@
     }
   }
 
+
+
   /**
    * Global System Orchestration Engine (Core Controller)
    */
+  
+  
   const NotificationController = {
     /**
      * Factory execution entry-point route
@@ -472,9 +480,14 @@
       }
     },
 
+
+
+
     /**
      * Cycles queued data items safely onto live views
-     */
+    */
+    
+    
     processQueue() {
       if (SystemState.backlogQueue.length === 0) return;
       if (SystemState.activeInstances.size >= NOTIFICATION_CONFIG.MAX_VISIBLE_NOTIFICATIONS) return;
@@ -483,9 +496,14 @@
       this.render(nextNotification);
     },
 
+
+
+  
     /**
      * Drops all active visibility arrays simultaneously
-     */
+    */
+  
+  
     clearAll() {
       SystemState.backlogQueue = [];
       for (const instance of SystemState.activeInstances) {
@@ -496,11 +514,14 @@
   };
 
 
+
+
   /**
    * Action Interception and Listener Aggregation Pipeline
    */
   
   
+
   const InteractionInterceptor = {
     init() {
       this.bindTriggers();
