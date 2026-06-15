@@ -2,84 +2,986 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tag / Chip Input Demo</title>
-  <link rel="stylesheet" href="taginput.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise High-Fidelity Tag/Chip Input Architecture</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES, TOKENS & SYSTEM BASE DECORATORS
+       ========================================================================== */
+    :root {
+      --uiverse-bg-rgb: 5, 8, 22;
+      --uiverse-surface-rgb: 15, 23, 42;
+      --uiverse-card-rgb: 13, 18, 36;
+      --uiverse-primary-rgb: 235, 104, 53;      /* Core Orange Accent */
+      --uiverse-secondary-rgb: 108, 92, 231;   /* Indigo Purple Accent */
+      --uiverse-danger-rgb: 239, 68, 68;       /* System Error Crimson */
+      --uiverse-success-rgb: 16, 185, 129;     /* Core Success Emerald */
+      --uiverse-text-rgb: 248, 250, 252;
+      --uiverse-muted-rgb: 148, 163, 184;
+
+      --uiverse-bg: rgb(var(--uiverse-bg-rgb));
+      --uiverse-surface: rgb(var(--uiverse-surface-rgb));
+      --uiverse-card: rgb(var(--uiverse-card-rgb));
+      --uiverse-primary: rgb(var(--uiverse-primary-rgb));
+      --uiverse-secondary: rgb(var(--uiverse-secondary-rgb));
+      --uiverse-danger: rgb(var(--uiverse-danger-rgb));
+      --uiverse-success: rgb(var(--uiverse-success-rgb));
+      --uiverse-text: rgb(var(--uiverse-text-rgb));
+      --uiverse-muted: rgb(var(--uiverse-muted-rgb));
+
+      --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --border-alpha: rgba(255, 255, 255, 0.06);
+      --glass-blur: blur(16px);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+
+      --shadow-lg: 0 24px 64px -12px rgba(0, 0, 0, 0.6);
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: all 0.15s ease;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--uiverse-bg);
+      color: var(--uiverse-text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Ambient Canvas Lighting Vectors */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(var(--uiverse-primary-rgb), 0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ==========================================================================
+       2. CANVAS HOUSING SHELL
+       ========================================================================== */
+    .container {
+      background: rgba(var(--uiverse-card-rgb), 0.45);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border-alpha);
+      padding: 56px 48px;
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 640px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 1;
+      transition: var(--transition-smooth);
+    }
+
+    .container:hover {
+      border-color: rgba(var(--uiverse-primary-rgb), 0.15);
+      box-shadow: var(--shadow-lg), 0 0 40px rgba(var(--uiverse-primary-rgb), 0.01);
+    }
+
+    .title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 30%, rgba(var(--uiverse-primary-rgb), 0.8) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--uiverse-muted);
+      font-size: 0.95rem;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .subtitle strong {
+      color: var(--uiverse-primary);
+    }
+
+    /* ==========================================================================
+       3. TAG INTERACTION WRAPPER COMPONENT
+       ========================================================================== */
+    .tag-input-wrapper {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-alpha);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      cursor: text;
+      transition: var(--transition-smooth);
+      position: relative;
+      min-height: 60px;
+    }
+
+    .tag-input-wrapper.focused {
+      border-color: var(--uiverse-primary);
+      background: rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 0 4px rgba(var(--uiverse-primary-rgb), 0.15);
+    }
+
+    .tag-input-wrapper.has-error {
+      border-color: var(--uiverse-danger) !important;
+      box-shadow: 0 0 0 4px rgba(var(--uiverse-danger-rgb), 0.12) !important;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* ==========================================================================
+       4. HIGH FIDELITY CHIP COMPONENT DESIGN
+       ========================================================================== */
+    .chip-node {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(var(--uiverse-primary-rgb), 0.08);
+      color: var(--uiverse-primary);
+      border: 1px solid rgba(var(--uiverse-primary-rgb), 0.2);
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      user-select: none;
+      animation: chipPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      transition: var(--transition-fast);
+      cursor: grab;
+      position: relative;
+    }
+
+    .chip-node:hover {
+      background: rgba(var(--uiverse-primary-rgb), 0.15);
+      border-color: rgba(var(--uiverse-primary-rgb), 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Accessibility Keyboard Traversal State Rules */
+    .chip-node:focus-visible,
+    .chip-node.keyboard-focused {
+      outline: none;
+      background: var(--uiverse-primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(var(--uiverse-primary-rgb), 0.3);
+    }
+
+    .chip-node.is-dragging {
+      opacity: 0.4;
+      cursor: grabbing;
+    }
+
+    .chip-remove-btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      font-size: 11px;
+      color: rgba(var(--uiverse-primary-rgb), 0.6);
+      transition: var(--transition-fast);
+    }
+
+    .chip-node:hover .chip-remove-btn {
+      color: var(--uiverse-primary);
+      background: rgba(var(--uiverse-primary-rgb), 0.1);
+    }
+
+    .chip-node.keyboard-focused .chip-remove-btn {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .chip-remove-btn:hover {
+      background: var(--uiverse-danger) !important;
+      color: #fff !important;
+    }
+
+    @keyframes chipPop {
+      0% { transform: scale(0.75); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ==========================================================================
+       5. CORE DATA INPUT FIELDS
+       ========================================================================== */
+    .tag-input-field {
+      flex: 1;
+      min-width: 140px;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 4px 0;
+    }
+
+    .tag-input-field::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ==========================================================================
+       6. CONTEXTUAL META METRICS & ERRORS HUDS
+       ========================================================================== */
+    .meta-metrics-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      min-height: 24px;
+      padding: 0 4px;
+    }
+
+    .error-msg-node {
+      color: var(--uiverse-danger);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: var(--transition-fast);
+    }
+
+    .error-msg-node.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .count-indicator {
+      font-size: 12px;
+      color: var(--uiverse-muted);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: auto;
+    }
+
+    .count-indicator.limit-reached {
+      color: var(--uiverse-primary);
+    }
+
+    /* ==========================================================================
+       7. SUGGESTED AUTOCOMPLETE HUD PANEL
+       ========================================================================== */
+    .autocomplete-panel {
+      position: absolute;
+      top: 105%;
+      left: 0;
+      right: 0;
+      background: rgb(21, 29, 47);
+      border: 1px solid var(--border-alpha);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      z-index: 100;
+      max-height: 200px;
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .autocomplete-panel.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .suggestion-item {
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--uiverse-muted);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .suggestion-item:hover,
+    .suggestion-item.highlighted {
+      background: rgba(var(--uiverse-primary-rgb), 0.06);
+      color: var(--uiverse-primary);
+    }
+
+    /* ==========================================================================
+       8. CONTROLS FOOTER ACTION BUTTONS
+       ========================================================================== */
+    .action-panel-footer {
+      margin-top: 32px;
+      display: flex;
+      gap: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 24px;
+    }
+
+    .btn {
+      background: var(--uiverse-primary);
+      color: #fff;
+      border: 1px solid transparent;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--uiverse-transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: #ff7640;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(var(--uiverse-primary-rgb), 0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-alpha);
+      color: var(--uiverse-muted);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">🏷️ Tag / Chip Input Component</h1>
-    <p class="subtitle">Type a skill or topic and press <strong>Enter</strong> to add a tag. Max 5 tags allowed.</p>
 
-    <!-- Component -->
-    <div class="tag-input" id="tagInput">
-      <div class="tags"></div>
-      <input type="text" id="tagField" placeholder="Type and press Enter...">
+  <div class="container">
+    
+    <h1 class="title">🏷️ Tag / Chip Input Component</h1>
+    <p class="subtitle">Type a skill or topic, then press <strong>Enter</strong> or <strong>Comma</strong> to build chips. Max 5 allowed.</p>
+
+    <div class="tag-input-wrapper" id="tagApparatusContainer">
+      
+      <div class="tags-container" id="chipsTargetContainer"></div>
+      
+      <input type="text" class="tag-input-field" id="tagInputElement" placeholder="Type tag and press Enter..." autocomplete="off">
+
+      <div class="autocomplete-panel" id="autocompleteSuggestionsPanel"></div>
+
     </div>
 
-    <!-- Error message -->
-    <p id="errorMsg" class="error-msg"></p>
+    <div class="meta-metrics-hud">
+      <div class="error-msg-node" id="errorMessageHUD"><i class="fa-solid fa-triangle-exclamation"></i> <span id="errorMsgText"></span></div>
+      <div class="count-indicator" id="tagCounterHUD">0 / 5 Tags</div>
+    </div>
+
+    <input type="hidden" name="serialized_tags_output" id="serializedHiddenField">
+
+    <div class="action-panel-footer">
+      <button class="btn btn-secondary" id="clearAllTagsAction"><i class="fa-solid fa-trash-can"></i> Reset Board</button>
+      <button class="btn" id="submitPayloadAction"><i class="fa-solid fa-cloud-arrow-up"></i> Save Payload</button>
+    </div>
+
   </div>
 
   <script>
-    const tagInput = document.getElementById("tagInput");
-const tagField = document.getElementById("tagField");
-const tagsContainer = tagInput.querySelector(".tags");
-const errorMsg = document.getElementById("errorMsg");
+    "use strict";
 
-let tags = [];
-const maxTags = 5;
+    (function(window, document) {
 
-function renderTags() {
-  tagsContainer.innerHTML = "";
-  tags.forEach((tag, index) => {
-    const chip = document.createElement("div");
-    chip.className = "tag";
-    chip.innerHTML = `
-      <span>${tag}</span>
-      <span class="remove" data-index="${index}">×</span>
-    `;
-    tagsContainer.appendChild(chip);
-  });
-}
+      /**
+       * Static Read-Only Component Settings Configuration Matrix Values Dictionary
+       * @type {Object}
+       */
+      const RUNTIME_CONFIG = {
+        LIMIT_BOUNDS_MAX: 5,
+        DUPLICATE_ERROR_MESSAGE: "Duplicate tag detection triggered inside stack!",
+        LIMIT_ERROR_MESSAGE: "Maximum array constraint configuration limit reached!",
+        VALIDATION_EMPTY_MESSAGE: "Input content blocks string parameters contain spaces only.",
+        SUGGESTIONS_PRESET_POOL: ["JavaScript", "TypeScript", "React", "NodeJS", "CSS3", "HTML5", "Python", "Docker", "Kubernetes", "GraphQL", "TailwindCSS", "NextJS"],
+        CLASSES: {
+          wrapperFocused: "focused",
+          wrapperError: "has-error",
+          chipBase: "chip-node",
+          chipKeyboardFocus: "keyboard-focused",
+          chipDragging: "is-dragging",
+          chipRemoveBtn: "chip-remove-btn",
+          errorActive: "active",
+          countLimitReached: "limit-reached",
+          panelVisible: "visible",
+          suggestionItem: "suggestion-item",
+          suggestionHighlighted: "highlighted"
+        }
+      };
 
-function showError(message) {
-  errorMsg.textContent = message;
-  setTimeout(() => {
-    errorMsg.textContent = "";
-  }, 2000);
-}
+      /**
+       * Centralized Operational State Machine Context Variables Cache Memory
+       */
+      const CoreState = {
+        tagsStack: [],
+        keyboardChipFocusIndex: -1,
+        activeAutocompleteHighlightIndex: -1,
+        filteredPoolCache: [],
+        activeDragSourceNode: null
+      };
 
-function addTag(tag) {
-  tag = tag.trim();
-  if (!tag) return;
-  if (tags.includes(tag)) {
-    showError("Duplicate tag not allowed!");
-    return;
-  }
-  if (tags.length >= maxTags) {
-    showError("Max tag limit reached!");
-    return;
-  }
-  tags.push(tag);
-  renderTags();
-}
+      /**
+       * Object Cache Mappings References Core DOM Elements Registry
+       */
+      const UI = {
+        wrapper: document.getElementById("tagApparatusContainer"),
+        chipsBox: document.getElementById("chipsTargetContainer"),
+        input: document.getElementById("tagInputElement"),
+        errorBox: document.getElementById("errorMessageHUD"),
+        errorText: document.getElementById("errorMsgText"),
+        counter: document.getElementById("tagCounterHUD"),
+        hiddenOutput: document.getElementById("serializedHiddenField"),
+        autocomplete: document.getElementById("autocompleteSuggestionsPanel"),
+        clearBtn: document.getElementById("clearAllTagsAction"),
+        saveBtn: document.getElementById("submitPayloadAction")
+      };
 
-tagField.addEventListener("keydown", e => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    addTag(tagField.value);
-    tagField.value = "";
-  }
-});
+      /**
+       * Low-Level Utility Logic Blocks Helpers Engine
+       */
+      const Utils = {
+        /**
+         * Escape text strings to completely protect against XSS vector inputs
+         */
+        sanitizeString(rawStr) {
+          if (typeof rawStr !== 'string') return '';
+          const entityMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#x27;',
+            '/': '&#x2F;'
+          };
+          return rawStr.replace(/[&<>"'/]/g, (match) => entityMap[match]);
+        },
 
-tagsContainer.addEventListener("click", e => {
-  if (e.target.classList.contains("remove")) {
-    const index = e.target.dataset.index;
-    tags.splice(index, 1);
-    renderTags();
-  }
-});
+        /**
+         * Validates payload configurations strings values
+         */
+        cleanInput(rawText) {
+          return rawText.replace(/\s+/g, ' ').trim();
+        }
+      };
 
+      /**
+       * DOM Reflow Manipulation Interface Layer
+       */
+      const DOMPipeline = {
+        /**
+         * Compiles high fidelity interactive nodes dynamically without wholesale wiping vectors
+         * @param {string} text content value character parameter payloads
+         * @returns {HTMLElement} standalone compiled node element
+         */
+        createChipElement(text) {
+          const chipNode = document.createElement("div");
+          chipNode.className = RUNTIME_CONFIG.CLASSES.chipBase;
+          chipNode.setAttribute("tabindex", "-1");
+          chipNode.setAttribute("role", "option");
+          chipNode.setAttribute("aria-selected", "true");
+          chipNode.draggable = true;
+          chipNode.dataset.value = text;
+
+          const textSpan = document.createElement("span");
+          textSpan.textContent = text;
+
+          const removeBtn = document.createElement("span");
+          removeBtn.className = RUNTIME_CONFIG.CLASSES.chipRemoveBtn;
+          removeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+          removeBtn.setAttribute("aria-label", `Remove target tag tag named ${text}`);
+
+          chipNode.appendChild(textSpan);
+          chipNode.appendChild(removeBtn);
+
+          return chipNode;
+        },
+
+        /**
+         * Orchestrates synchronized alignment patterns over nodes and hidden string interfaces
+         */
+        synchronizeDisplayMatrix() {
+          // Differential reconciliation processing logic cycle
+          const currentNodes = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+          const currentValuesMap = currentNodes.map(node => node.dataset.value);
+
+          // Clear historical remnants cleanly if the tracking model state dropped items entirely
+          if (CoreState.tagsStack.length === 0) {
+            UI.chipsBox.innerHTML = "";
+          } else {
+            // Process removals
+            currentNodes.forEach(node => {
+              if (!CoreState.tagsStack.includes(node.dataset.value)) {
+                node.remove();
+              }
+            });
+
+            // Process progressive generation insertions matching stack sequences arrays index keys
+            CoreState.tagsStack.forEach((tag, idx) => {
+              if (!currentValuesMap.includes(tag)) {
+                const freshChip = this.createChipElement(tag);
+                DragAndDropSystem.attachDragListeners(freshChip);
+                UI.chipsBox.appendChild(freshChip);
+              }
+            });
+          }
+
+          // Force sequence correction rules reflecting array stack arrays variations positions
+          this.reorderDOMElementsToMatchState();
+
+          // Sync text nodes HUD metrics outputs dashboard elements counters
+          const totalCount = CoreState.tagsStack.length;
+          UI.counter.textContent = `${totalCount} / ${RUNTIME_CONFIG.LIMIT_BOUNDS_MAX} Tags`;
+          UI.counter.classList.toggle(RUNTIME_CONFIG.CLASSES.countLimitReached, totalCount >= RUNTIME_CONFIG.LIMIT_BOUNDS_MAX);
+
+          // Stream compiled structural strings back into system parameters hidden variables values fields
+          UI.hiddenOutput.value = JSON.stringify(CoreState.tagsStack);
+        },
+
+        reorderDOMElementsToMatchState() {
+          const existingChips = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+          const chipMap = {};
+          existingChips.forEach(chip => { chipMap[chip.dataset.value] = chip; });
+
+          CoreState.tagsStack.forEach(value => {
+            if (chipMap[value]) {
+              UI.chipsBox.appendChild(chipMap[value]);
+            }
+          });
+        },
+
+        /**
+         * Dispatches fleeting temporal alert tracking frames configurations onto screens interfaces
+         */
+        triggerAlertNotification(messageText) {
+          UI.errorText.textContent = messageText;
+          UI.wrapper.classList.add(RUNTIME_CONFIG.CLASSES.wrapperError);
+          UI.errorBox.classList.add(RUNTIME_CONFIG.CLASSES.errorActive);
+
+          // Auto purge error display after timeout values expire
+          clearTimeout(this.errorKillTimeoutID);
+          this.errorKillTimeoutID = setTimeout(() => {
+            UI.wrapper.classList.remove(RUNTIME_CONFIG.CLASSES.wrapperError);
+            UI.errorBox.classList.remove(RUNTIME_CONFIG.CLASSES.errorActive);
+          }, 3000);
+        }
+      };
+
+      /**
+       * In-Memory Filtering and Match-Making Mechanism Module
+       */
+      const AutocompleteSystem = {
+        evaluateSuggestions(rawInputValue) {
+          const normalizedInput = rawInputValue.toLowerCase().trim();
+          
+          if (!normalizedInput) {
+            this.collapseDropdownPanel();
+            return;
+          }
+
+          // Strip active contents array records values to exclude duplicates options previews
+          CoreState.filteredPoolCache = RUNTIME_CONFIG.SUGGESTIONS_PRESET_POOL.filter(item => {
+            return item.toLowerCase().includes(normalizedInput) && !CoreState.tagsStack.includes(item);
+          });
+
+          if (CoreState.filteredPoolCache.length === 0) {
+            this.collapseDropdownPanel();
+          } else {
+            this.buildDropdownMarkup();
+          }
+        },
+
+        buildDropdownMarkup() {
+          UI.autocomplete.innerHTML = "";
+          CoreState.activeAutocompleteHighlightIndex = -1;
+
+          CoreState.filteredPoolCache.forEach((suggestion, index) => {
+            const itemElement = document.createElement("div");
+            itemElement.className = RUNTIME_CONFIG.CLASSES.suggestionItem;
+            itemElement.textContent = suggestion;
+            itemElement.dataset.index = index;
+
+            itemElement.addEventListener("click", () => {
+              CoreComponentOrchestrator.pushTagStack(suggestion);
+              this.collapseDropdownPanel();
+            });
+
+            UI.autocomplete.appendChild(itemElement);
+          });
+
+          UI.autocomplete.classList.add(RUNTIME_CONFIG.CLASSES.panelVisible);
+        },
+
+        collapseDropdownPanel() {
+          UI.autocomplete.classList.remove(RUNTIME_CONFIG.CLASSES.panelVisible);
+          UI.autocomplete.innerHTML = "";
+          CoreState.activeAutocompleteHighlightIndex = -1;
+          CoreState.filteredPoolCache = [];
+        },
+
+        navigateSelectionHighlight(direction) {
+          const items = Array.from(UI.autocomplete.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.suggestionItem}`));
+          if (items.length === 0) return;
+
+          // Clear tracking styles channels paths metrics
+          items.forEach(el => el.classList.remove(RUNTIME_CONFIG.CLASSES.suggestionHighlighted));
+
+          if (direction === "next") {
+            CoreState.activeAutocompleteHighlightIndex = (CoreState.activeAutocompleteHighlightIndex + 1) % items.length;
+          } else if (direction === "prev") {
+            CoreState.activeAutocompleteHighlightIndex = (CoreState.activeAutocompleteHighlightIndex - 1 + items.length) % items.length;
+          }
+
+          if (CoreState.activeAutocompleteHighlightIndex >= 0 && items[CoreState.activeAutocompleteHighlightIndex]) {
+            const targetElementNode = items[CoreState.activeAutocompleteHighlightIndex];
+            targetElementNode.classList.add(RUNTIME_CONFIG.CLASSES.suggestionHighlighted);
+            targetElementNode.scrollIntoView({ block: "nearest" });
+          }
+        }
+      };
+
+      /**
+       * HTML5 Native Drag-and-Drop Ordering Protocol Integration Layer
+       */
+      const DragAndDropSystem = {
+        attachDragListeners(chipElement) {
+          chipElement.addEventListener("dragstart", (e) => {
+            CoreState.activeDragSourceNode = chipElement;
+            chipElement.classList.add(RUNTIME_CONFIG.CLASSES.chipDragging);
+            e.dataTransfer.effectAllowed = "move";
+            e.dataTransfer.setData("text/plain", chipElement.dataset.value);
+          });
+
+          chipElement.addEventListener("dragend", () => {
+            chipElement.classList.remove(RUNTIME_CONFIG.CLASSES.chipDragging);
+            CoreState.activeDragSourceNode = null;
+            
+            const activeDragIndicatorNode = UI.chipsBox.querySelector(".drag-spacer-node");
+            if (activeDragIndicatorNode) activeDragIndicatorNode.remove();
+          });
+
+          chipElement.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+            
+            if (chipElement === CoreState.activeDragSourceNode) return;
+
+            const boxBoundingRect = chipElement.getBoundingClientRect();
+            const midpointHorizontalOffset = boxBoundingRect.left + (boxBoundingRect.width / 2);
+            
+            if (e.clientX < midpointHorizontalOffset) {
+              UI.chipsBox.insertBefore(CoreState.activeDragSourceNode, chipElement);
+            } else {
+              UI.chipsBox.insertBefore(CoreState.activeDragSourceNode, chipElement.nextSibling);
+            }
+          });
+
+          chipElement.addEventListener("drop", (e) => {
+            e.preventDefault();
+            this.reconcileArrayDataWithDOMOrder();
+          });
+        },
+
+        reconcileArrayDataWithDOMOrder() {
+          const freshOrderedNodes = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+          CoreState.tagsStack = freshOrderedNodes.map(node => node.dataset.value);
+          DOMPipeline.synchronizeDisplayMatrix();
+        }
+      };
+
+      /**
+       * Structural Operations Input Events Interceptions Handlers Engine
+       */
+      const InputEventsInterceptor = {
+        init() {
+          this.bindApparatusFocusContexts();
+          this.bindKeyboardPipelines();
+          this.bindDelegatedNodePurges();
+          this.bindFooterActionsPanel();
+        },
+
+        bindApparatusFocusContexts() {
+          // Route core ambient wrapper box element clicks straight onto the focused terminal inputs line
+          UI.wrapper.addEventListener("click", (e) => {
+            if (e.target === UI.wrapper || e.target === UI.chipsBox) {
+              UI.input.focus();
+            }
+          });
+
+          UI.input.addEventListener("focus", () => {
+            UI.wrapper.classList.add(RUNTIME_CONFIG.CLASSES.wrapperFocused);
+            this.clearActiveKeyboardChipSelection();
+          });
+
+          UI.input.addEventListener("blur", () => {
+            UI.wrapper.classList.remove(RUNTIME_CONFIG.CLASSES.wrapperFocused);
+            // Yield context briefly before tearing panels down to allow dynamic suggestion item selection routes to fire safely first
+            setTimeout(() => {
+              AutocompleteSystem.collapseDropdownPanel();
+            }, 200);
+          });
+        },
+
+        bindKeyboardPipelines() {
+          UI.input.addEventListener("input", (e) => {
+            AutocompleteSystem.evaluateSuggestions(UI.input.value);
+          });
+
+          UI.input.addEventListener("keydown", (e) => {
+            const rawValueToken = UI.input.value;
+            const normalizedCleanString = Utils.cleanInput(rawValueToken);
+
+            // If the dropdown panel is displayed on screen, override arrow keys path selection behaviors
+            if (UI.autocomplete.classList.contains(RUNTIME_CONFIG.CLASSES.panelVisible)) {
+              if (e.key === "ArrowDown") {
+                e.preventDefault();
+                AutocompleteSystem.navigateSelectionHighlight("next");
+                return;
+              } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                AutocompleteSystem.navigateSelectionHighlight("prev");
+                return;
+              } else if (e.key === "Escape") {
+                e.preventDefault();
+                AutocompleteSystem.collapseDropdownPanel();
+                return;
+              }
+            }
+
+            switch (e.key) {
+              case "Enter":
+              case ",":
+                e.preventDefault();
+                
+                // If a suggestion dropdown item is explicitly highlighted via keyboard, choose that target item value instead
+                if (CoreState.activeAutocompleteHighlightIndex >= 0 && CoreState.filteredPoolCache[CoreState.activeAutocompleteHighlightIndex]) {
+                  CoreComponentOrchestrator.pushTagStack(CoreState.filteredPoolCache[CoreState.activeAutocompleteHighlightIndex]);
+                } else {
+                  CoreComponentOrchestrator.pushTagStack(normalizedCleanString);
+                }
+                
+                UI.input.value = "";
+                AutocompleteSystem.collapseDropdownPanel();
+                break;
+
+              case "Backspace":
+                if (rawValueToken.length === 0 && CoreState.tagsStack.length > 0) {
+                  e.preventDefault();
+                  this.engageKeyboardNavigationMode();
+                }
+                break;
+
+              case "ArrowLeft":
+                if (UI.input.selectionStart === 0 && UI.input.selectionEnd === 0 && CoreState.tagsStack.length > 0) {
+                  e.preventDefault();
+                  this.engageKeyboardNavigationMode();
+                }
+                break;
+            }
+          });
+
+          // Bind dedicated keyboard shortcuts listener directly onto document root to intercept focused elements traversal loops
+          document.addEventListener("keydown", (e) => {
+            if (CoreState.keyboardChipFocusIndex === -1) return;
+
+            const existingChipElementNodes = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+            
+            switch (e.key) {
+              case "ArrowLeft":
+                e.preventDefault();
+                CoreState.keyboardChipFocusIndex = Math.max(0, CoreState.keyboardChipFocusIndex - 1);
+                this.updateKeyboardChipFocusPresentation(existingChipElementNodes);
+                break;
+
+              case "ArrowRight":
+                e.preventDefault();
+                if (CoreState.keyboardChipFocusIndex >= existingChipElementNodes.length - 1) {
+                  this.clearActiveKeyboardChipSelection();
+                  UI.input.focus();
+                } else {
+                  CoreState.keyboardChipFocusIndex++;
+                  this.updateKeyboardChipFocusPresentation(existingChipElementNodes);
+                }
+                break;
+
+              case "Backspace":
+              case "Delete":
+                e.preventDefault();
+                const targetValueToPurge = existingChipElementNodes[CoreState.keyboardChipFocusIndex].dataset.value;
+                CoreComponentOrchestrator.dropTagStackValue(targetValueToPurge);
+                
+                // Adjust focus index points dynamically following inline object drop exclusions processes
+                if (CoreState.tagsStack.length === 0) {
+                  this.clearActiveKeyboardChipSelection();
+                  UI.input.focus();
+                } else {
+                  CoreState.keyboardChipFocusIndex = Math.min(CoreState.keyboardChipFocusIndex, CoreState.tagsStack.length - 1);
+                  const freshChips = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+                  this.updateKeyboardChipFocusPresentation(freshChips);
+                }
+                break;
+
+              case "Escape":
+                e.preventDefault();
+                this.clearActiveKeyboardChipSelection();
+                UI.input.focus();
+                break;
+            }
+          });
+        },
+
+        engageKeyboardNavigationMode() {
+          UI.input.blur();
+          const chips = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+          CoreState.keyboardChipFocusIndex = chips.length - 1;
+          this.updateKeyboardChipFocusPresentation(chips);
+        },
+
+        updateKeyboardChipFocusPresentation(chipsArray) {
+          chipsArray.forEach(el => el.classList.remove(RUNTIME_CONFIG.CLASSES.chipKeyboardFocus));
+          
+          if (chipsArray[CoreState.keyboardChipFocusIndex]) {
+            const targetChip = chipsArray[CoreState.keyboardChipFocusIndex];
+            targetChip.classList.add(RUNTIME_CONFIG.CLASSES.chipKeyboardFocus);
+            targetChip.focus();
+          }
+        },
+
+        clearActiveKeyboardChipSelection() {
+          CoreState.keyboardChipFocusIndex = -1;
+          const chips = Array.from(UI.chipsBox.querySelectorAll(`.${RUNTIME_CONFIG.CLASSES.chipBase}`));
+          chips.forEach(el => el.classList.remove(RUNTIME_CONFIG.CLASSES.chipKeyboardFocus));
+        },
+
+        bindDelegatedNodePurges() {
+          // Delegate delegated visual click execution handling pipelines down onto dynamic elements structures buttons targets directly
+          UI.chipsBox.addEventListener("click", (e) => {
+            const removeBtnMatch = e.target.closest(`.${RUNTIME_CONFIG.CLASSES.chipRemoveBtn}`);
+            if (!removeBtnMatch) return;
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            const targetParentNodeChip = removeBtnMatch.closest(`.${RUNTIME_CONFIG.CLASSES.chipBase}`);
+            if (targetParentNodeChip) {
+              CoreComponentOrchestrator.dropTagStackValue(targetParentNodeChip.dataset.value);
+              UI.input.focus();
+            }
+          });
+        },
+
+        bindFooterActionsPanel() {
+          UI.clearBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            CoreComponentOrchestrator.flushEntireCollection();
+            UI.input.focus();
+          });
+
+          UI.saveBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert(`JSON Pipeline Serialization Complete:\n${UI.hiddenOutput.value}`);
+          });
+        }
+      };
+
+      /**
+       * Core Core Business Processing Intelligence Controller Logic Orchestrator
+       */
+      const CoreComponentOrchestrator = {
+        init() {
+          InputEventsInterceptor.init();
+          DOMPipeline.synchronizeDisplayMatrix();
+        },
+
+        pushTagStack(extractedTextValue) {
+          const filteredValue = Utils.sanitizeString(extractedTextValue);
+
+          if (!filteredValue) {
+            DOMPipeline.triggerAlertNotification(RUNTIME_CONFIG.VALIDATION_EMPTY_MESSAGE);
+            return;
+          }
+
+          if (CoreState.tagsStack.includes(filteredValue)) {
+            DOMPipeline.triggerAlertNotification(RUNTIME_CONFIG.DUPLICATE_ERROR_MESSAGE);
+            return;
+          }
+
+          if (CoreState.tagsStack.length >= RUNTIME_CONFIG.LIMIT_BOUNDS_MAX) {
+            DOMPipeline.triggerAlertNotification(RUNTIME_CONFIG.LIMIT_ERROR_MESSAGE);
+            return;
+          }
+
+          CoreState.tagsStack.push(filteredValue);
+          DOMPipeline.synchronizeDisplayMatrix();
+        },
+
+        dropTagStackValue(targetStringMatch) {
+          const matchIndexKey = CoreState.tagsStack.indexOf(targetStringMatch);
+          if (matchIndexKey >= 0) {
+            CoreState.tagsStack.splice(matchIndexKey, 1);
+            DOMPipeline.synchronizeDisplayMatrix();
+          }
+        },
+
+        flushEntireCollection() {
+          CoreState.tagsStack = [];
+          DOMPipeline.synchronizeDisplayMatrix();
+        }
+      };
+
+      /**
+       * Master Execution Synchronization Boot Hooks Anchor
+       */
+      function bootloadApparatusContext() {
+        CoreComponentOrchestrator.init();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootloadApparatusContext);
+      } else {
+        bootloadApparatusContext();
+      }
+
+    })(window, document);
   </script>
 </body>
 </html>
